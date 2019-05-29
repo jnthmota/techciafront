@@ -1,5 +1,4 @@
 <template>
-  <div class="form login">
     <form @submit.prevent="handleSubmit">
       <b-form-group>
         <b-form-input v-model="user.email" type="text" id="email" placeholder="Digite seu email"></b-form-input>
@@ -16,7 +15,6 @@
         <b-button type="submit" size="sm" variant="primary">Entrar</b-button>
       </b-form-group>
     </form>
-  </div>
 </template>
 
 <script>

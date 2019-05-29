@@ -19,22 +19,17 @@
       <b-col md="5" class="auth">
         <div class="auth-sec">
           <!-- TABS -->
-          <div class="tabs">
-            <ul class="ul-tabs">
-              <li>
-                <router-link to="login" active-class="active">Logar</router-link>
-              </li>
-              <li>
-                <router-link to="register-candidate" active-class="active" class="register">Registrar Candidato</router-link>
-              </li>
-              <li>
-                <router-link to="register-hunter" active-class="active" class="register">Registrar Empresa</router-link>
-              </li>
-            </ul>
-          </div>
-          <div class="content">
-            <router-view></router-view>
-          </div>
+          <b-tabs>
+            <b-tab title="Login" active>
+              <Login/>
+            </b-tab>
+            <b-tab title="Cadastrar Candidato">
+              <RegisterCandidate/>
+            </b-tab>
+            <b-tab title="Cadastrar Empresa">
+               <RegisterHunter/>
+            </b-tab>
+          </b-tabs>
         </div>
       </b-col>
     </b-row>
@@ -42,8 +37,16 @@
 </template>
 
 <script>
+import Login  from '../forms/Login'
+import RegisterHunter  from '../forms/RegisterHunter'
+import RegisterCandidate  from '../forms/RegisterCandidate'
 export default {
-  name: "Initial"
+  name: "PageInitial",
+  components: {
+    Login,
+    RegisterHunter,
+    RegisterCandidate
+  }
 };
 </script>
 
@@ -79,7 +82,7 @@ export default {
   background: url("../../assets/images/main-bg.jpg") repeat;
 }
 
-.banner .title{
+.banner .title {
   position: relative;
 }
 .banner .title-sec {
@@ -101,13 +104,11 @@ export default {
   width: 410px;
   top: 50px;
   right: 30%;
-  background: rgba(0, 0, 0, 0.8);
   border-radius: 0 0 6px 6px;
 }
 
-.banner .auth .auth-sec .tabs {
-  height: 50px;
-  width: 100%;
+.banner .auth .auth-sec .tabs li:nth-child(1) {
+  line-height: 46px;
 }
 
 .banner .auth .auth-sec .tabs ul {
@@ -121,33 +122,34 @@ export default {
   list-style: none;
   width: 33.33%;
   cursor: pointer;
-  height: 54px;
+  height: 54px !important;
 }
 
 .banner .auth .auth-sec .tabs li a {
   border: none;
-  padding: 15px 10px;
+  padding: 4px 10px;
   color: #fff;
   font-size: 15px;
-  padding: 15px 10px;
   width: 100%;
-  display: block;
+  background: rgba(0, 0, 0, 0.8);
   text-align: center;
-}
-
-.banner .auth .auth-sec .tabs li a.register {
-  padding: 5px 10px;
+  border-radius: 0px;
+  height: 53px;
 }
 
 .banner .auth .auth-sec .tabs li a.active {
   background: #0099ff;
+  padding: 4px 10px;
 }
 
-.banner .auth .auth-sec .content {
-  padding: 40px;
+.banner .auth .auth-sec .tab-content {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border: none;
 }
-.banner .auth .auth-sec .content .form input {
-  background: #424242;
+.banner .auth .auth-sec .tab-content form input {
+  background-color: #424242;
   border-radius: 30px;
   border: none;
   height: 40px;
@@ -155,7 +157,7 @@ export default {
   padding: 0 30px;
   color: #fff;
 }
-.banner .auth .auth-sec .content .form button {
+.banner .auth .auth-sec .tab-content form button {
   border: none;
   background: #0099ff;
   border-radius: 30px;

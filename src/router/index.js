@@ -8,10 +8,7 @@ const DefaultContainerCompany = () => import('@/containers/company/DefaultContai
 // Views - Pages
 const Page404 = () => import('@/views/pages/Page404')
 const Page500 = () => import('@/views/pages/Page500')
-const Initial = () => import('@/views/pages/Initial')
-const Login = () => import('@/views/pages/Login')
-const RegisterHunter = () => import('@/views/pages/RegisterHunter')
-const RegisterCandidate = () => import('@/views/pages/RegisterCandidate')
+const PageInitial = () => import('@/views/pages/PageInitial')
 
 // Candidate
 const DefaultProfile = () => import('@/views/candidates/profile/DefaultProfile')
@@ -89,7 +86,7 @@ export default new Router({
       }]
     }, {
       path: '/',
-      redirect: '/initial',
+      redirect: '/',
       name: 'Pages',
       component: {
         render(c) { return c('router-view') }
@@ -106,27 +103,9 @@ export default new Router({
           component: Page500
         },
         {
-          path: 'initial',
-          name: 'Initial',
-          component: Initial,
-          redirect: '/initial/login',
-          children: [
-            {
-              path: 'login',
-              name: 'Login',
-              component: Login
-            },
-            {
-              path: 'register-hunter',
-              name: 'Register Hunter',
-              component: RegisterHunter
-            },
-            {
-              path: 'register-candidate',
-              name: 'Register Candidate',
-              component: RegisterCandidate
-            }
-          ]
+          path: '',
+          name: 'Page Initial',
+          component: PageInitial,
         }
       ]
     }

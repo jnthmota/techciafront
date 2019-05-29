@@ -1,5 +1,4 @@
 <template>
-  <div class="form register-hunter">
     <form  v-on:submit="handleSubmit()">
       <b-form-group>
         <b-form-input v-model="user.name" type="text" id="name" placeholder="Digite o nome da empresa"></b-form-input>
@@ -17,7 +16,6 @@
         <b-button type="submit" size="sm" variant="primary">Cadastrar</b-button>
       </b-form-group>
     </form>
-  </div>
 </template>
 
 <script>
