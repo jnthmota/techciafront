@@ -72,6 +72,12 @@ export default {
       title: 'Wow-wow',
       message: 'That\'s the error'
     }
+  },
+
+  methods: {
+    teste(){
+      alert('teste');
+    }
   }
 }
 </script>

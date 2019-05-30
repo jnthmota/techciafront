@@ -29,7 +29,7 @@
 </template>
 
 <script>
-// import { userService } from "../../services/user.service";
+import notification from "../notifications/Toastr";
 export default {
   name: "RegisterCandidate",
   data() {
@@ -73,7 +73,12 @@ export default {
       if (this.submitted) {
         this.$store.dispatch("authentication/register", this.user);
       } else {
-        alert("Preencha os campos corretamente")
+        let message = "";
+        for (let error in this.errors) {
+          message += this.errors[error]  + "\n";
+        }
+
+        notification.teste();
       }
     },
     validEmail(email) {
