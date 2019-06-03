@@ -7,12 +7,10 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import { store } from './_store';
 import router from './router/index'
-
-// todo
-// cssVars()
+import Notifications from 'vue-notification'
 
 Vue.use(BootstrapVue)
-
+Vue.use(Notifications)
 
 new Vue({
   el: '#app',

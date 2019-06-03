@@ -37,7 +37,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch('http://localhost:3000' + '/auth/register', requestOptions)
+    return fetch('http://localhost:3000' + '/auth/signup/candidate', requestOptions)
         .then(handleResponse)
         .then(user => {
             // login successful if there's a jwt token in the response

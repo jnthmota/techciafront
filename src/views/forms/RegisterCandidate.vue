@@ -1,35 +1,26 @@
 <template>
-    <form v-on:submit="handleSubmit()">
-      <b-form-group>
-        <b-form-input v-model="user.name" type="text" id="name" placeholder="Digite seu nome"></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <b-form-input v-model="user.email" type="text" id="email" placeholder="Digite seu email"></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <b-form-input
-          v-model="user.password"
-          type="text"
-          id="password"
-          placeholder="Digite sua senha"
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <b-form-input
-          v-model="confirmPassword"
-          type="text"
-          id="password-confirm"
-          placeholder="Confirme a sua senha"
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group class="text-center">
-        <b-button type="submit" size="sm" variant="primary">Cadastrar</b-button>
-      </b-form-group>
-    </form>
+  <form v-on:submit="handleSubmit()">
+    <b-form-group>
+      <b-form-input v-model="user.name" type="text" id="name" placeholder="Digite seu nome"></b-form-input>
+    </b-form-group>
+    <b-form-group>
+      <b-form-input v-model="user.email" type="text" id="email" placeholder="Digite seu email"></b-form-input>
+    </b-form-group>
+    <b-form-group>
+      <b-form-input
+        v-model="user.password"
+        type="password"
+        id="password"
+        placeholder="Digite sua senha"
+      ></b-form-input>
+    </b-form-group>
+    <b-form-group class="text-center">
+      <b-button type="submit" size="sm" variant="primary">Cadastrar</b-button>
+    </b-form-group>
+  </form>
 </template>
 
 <script>
-import notification from "../notifications/Toastr";
 export default {
   name: "RegisterCandidate",
   data() {
@@ -57,16 +48,11 @@ export default {
         this.errors.push("O email é obrigatória.");
         this.submitted = false;
       } else if (!this.validEmail(this.user.email)) {
-        this.errors.push("Utilize um e-mail válido.");
+        this.errors.push("Utilize um email válido.");
       }
 
       if (!this.user.password) {
-        this.errors.push("O password é obrigatória.");
-        this.submitted = false;
-      }
-
-      if (this.user.password === this.confirmPassword) {
-        this.errors.push("As senhas não conferem.");
+        this.errors.push("A senha é obrigatória.");
         this.submitted = false;
       }
 
@@ -75,10 +61,17 @@ export default {
       } else {
         let message = "";
         for (let error in this.errors) {
-          message += this.errors[error]  + "\n";
+          message += this.errors[error] + "<br/>";
         }
 
-        notification.teste();
+        this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Registrar Candidato",
+          text: message,
+          duration: 5000
+        });
+        return 0;
       }
     },
     validEmail(email) {

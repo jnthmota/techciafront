@@ -1,21 +1,5 @@
 <template>
-  <div class="animated fadeIn">
-    <b-card show-footer>
-      <div slot="header">
-        <i class="icon-info"></i> Toastr
-        <a href="https://coreui.io/pro/vue/" rel="noreferrer noopener" target="_blank" class="badge badge-danger ml-1">CoreUI Pro</a>
-        <div class="card-header-actions">
-          <a href="https://github.com/se-panfilov/vue-notifications" rel="noreferrer noopener" target="_blank" class="card-header-action">
-            <small class="text-muted">docs</small>
-          </a>
-        </div>
-      </div>
-      <b-button class="mr-1" type="button" variant="success" @click="showSuccessMsg()">Success</b-button>
-      <b-button class="mr-1" type="button" variant="info" @click="showInfoMsg()">Info</b-button>
-      <b-button class="mr-1" type="button" variant="warning" @click="showWarnMsg()">Warning</b-button>
-      <b-button class="mr-1" type="button" variant="danger" @click="showErrorMsg()">Error</b-button>
-    </b-card>
-  </div>
+
 </template>
 
 <script>
@@ -49,7 +33,7 @@ Vue.use(VueNotifications, options)
 export default {
   name: 'toastr',
   data () {
-    return {}
+    return notifications
   },
   notifications: {
     showSuccessMsg: {
@@ -73,11 +57,5 @@ export default {
       message: 'That\'s the error'
     }
   },
-
-  methods: {
-    teste(){
-      alert('teste');
-    }
-  }
 }
 </script>

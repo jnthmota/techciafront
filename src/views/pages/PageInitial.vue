@@ -27,19 +27,20 @@
               <RegisterCandidate/>
             </b-tab>
             <b-tab title="Cadastrar Empresa">
-               <RegisterHunter/>
+              <RegisterHunter/>
             </b-tab>
           </b-tabs>
         </div>
       </b-col>
     </b-row>
+    <notifications group="foo" position="bottom center"/>
   </div>
 </template>
 
 <script>
-import Login  from '../forms/Login'
-import RegisterHunter  from '../forms/RegisterHunter'
-import RegisterCandidate  from '../forms/RegisterCandidate'
+import Login from "../forms/Login";
+import RegisterHunter from "../forms/RegisterHunter";
+import RegisterCandidate from "../forms/RegisterCandidate";
 export default {
   name: "PageInitial",
   components: {
@@ -165,5 +166,13 @@ export default {
   color: #fff;
   float: left;
   font-size: 14px;
+}
+
+.notification-title{
+  font-size: 18px;
+}
+
+.notification-content{
+  font-size: 16px;
 }
 </style>
