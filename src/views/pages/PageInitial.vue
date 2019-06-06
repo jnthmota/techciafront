@@ -21,10 +21,14 @@
           <!-- TABS -->
           <b-tabs>
             <b-tab title="Login" active>
-              <Login/>
+              <Login>
+                 <b-button @click.prevent="loginUser()" type="submit" size="sm" variant="primary">Entrar</b-button>
+              </Login>
             </b-tab>
             <b-tab title="Cadastrar Candidato">
-              <RegisterCandidate/>
+              <RegisterCandidate>
+                <b-button @click.prevent="singUpCandidate()" type="submit" size="sm" variant="primary">Cadastrar</b-button>
+              </RegisterCandidate>
             </b-tab>
             <b-tab title="Cadastrar Empresa">
               <RegisterHunter/>
@@ -43,10 +47,28 @@ import RegisterHunter from "../forms/RegisterHunter";
 import RegisterCandidate from "../forms/RegisterCandidate";
 export default {
   name: "PageInitial",
+  // data() {
+  //   return {
+  //     login: {
+  //       email: null,
+  //       password: null
+  //     },
+  //     errors: [],
+  //     submitted: true
+  //   };
+  // },
   components: {
     Login,
     RegisterHunter,
     RegisterCandidate
+  },
+  methods:{
+    singUpCandidate(){
+      this.$store.dispatch("singUpCandidate", this.$store.state.auth.register);
+    },
+    loginUser(){
+      this.$store.dispatch("loginUser", this.$store.state.auth.logar);
+    }
   }
 };
 </script>
