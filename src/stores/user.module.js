@@ -13,7 +13,6 @@ export const user = {
                 postalCode: ""
             },
             phone: "",
-            dateBirth: "",
             document: ""
         }
     },
@@ -24,10 +23,15 @@ export const user = {
     },
     actions: {
         getUser(context) {
-            userApi.get(`/user/me/`).then(response => {
-                context.commit("UPDATE_USER", response.data.user);
+            userApi.get(`/users/me/`).then(response => {
+                context.commit("UPDATE_USER", response.data);
                 context.commit('UPDATE_LOGIN', true);
             })
         },
+        updateUser(context, playload) {
+            userApi.put(`/users`, playload).then(response => {
+                console.log(response);
+            });
+        }
     }
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { puts } from "util";
 
 const axiosInstance = axios.create({
     baseURL: "https://hunter-api.herokuapp.com/v1"
@@ -18,7 +19,10 @@ axiosInstance.interceptors.request.use(
 )
 
 export const userApi = {
-    get(endpoint, body) {
-        return axiosInstance.get(endpoint, body);
+    get(endpoint) {
+        return axiosInstance.get(endpoint);
+    },
+    put(endpoint, body) {
+        return axiosInstance.put(endpoint, body);
     }
 };

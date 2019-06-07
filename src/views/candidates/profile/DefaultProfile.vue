@@ -31,6 +31,12 @@
 
 <script>
 export default {
+  computed: {
+    async getUser(){
+      await this.$store.dispatch("getUser");
+    }
+  },
+
   name: "DefaultProfile"
 };
 </script>

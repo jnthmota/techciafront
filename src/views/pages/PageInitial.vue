@@ -47,16 +47,6 @@ import RegisterHunter from "../forms/RegisterHunter";
 import RegisterCandidate from "../forms/RegisterCandidate";
 export default {
   name: "PageInitial",
-  // data() {
-  //   return {
-  //     login: {
-  //       email: null,
-  //       password: null
-  //     },
-  //     errors: [],
-  //     submitted: true
-  //   };
-  // },
   components: {
     Login,
     RegisterHunter,

@@ -1,34 +1,25 @@
 
 <template>
-  <b-col md="9">
+  <b-col  md="9">
     <b-card header="Dados Pessoais" border-variant="warning">
-      <form class="formExperience">
-        <div class="experience">
-          <b-form-group>
-            <label for="email">Nome Completo</label>
-            <b-form-input type="text" id="email" placeholder="Ex: Bill Gates"></b-form-input>
-          </b-form-group>
-          <b-form-group>
-            <label for="email">Email</label>
-            <b-form-input type="email" id="email" placeholder="Ex: bill.gates@microsoft.com"></b-form-input>
-          </b-form-group>
-          <b-form-group>
-            <label for="phone">Celular</label>
-            <b-form-input type="text" id="phone" placeholder="ex: (11) 94805-3050"></b-form-input>
-          </b-form-group>
-        </div>
-
-        <hr>
-        <b-form-group class="text-right">
-          <b-button type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
-        </b-form-group>
-      </form>
+      <personaldata>
+        <b-button @click.prevent="updateUser()" type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
+      </personaldata>
     </b-card>
   </b-col>
 </template>
 <script>
+import personaldata from "../../forms/PersonalData";
 export default {
-  name: "PersonalData"
+  name: "PersonalData",
+  components: {
+    personaldata
+  },
+  methods:{
+    updateUser(){
+      this.$store.dispatch("updateUser", this.$store.state.user.user);
+    }
+  }
 };
 </script>
 

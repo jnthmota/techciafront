@@ -1,5 +1,6 @@
 import { authApi } from '../services/index';
-import  router  from '../router/index';
+import router from '../router/index';
+import Vue from 'vue'
 export const auth = {
     strict: true,
     state: {
@@ -27,23 +28,49 @@ export const auth = {
         }
     },
     actions: {
-        loginUser(context, payload){
-            authApi.login('/auth/signin', {
-                email: payload.email,
-                password: payload.password
-            }).then(response => {
-                window.localStorage.token =  `Bearer ${response.data.token}`;
-                context.commit("UPDATE_USER", response.data.user);
-                context.commit('UPDATE_LOGIN', true);
-                if(response.data.user.role === "candidate")
-                    router.push('/candidates');
-                else
-                    router.push('/company');
-            });
+        loginUser(context, payload) {
+            const errors = [];
+            let submitted = true;
+            if (!payload.email) {
+                errors.push("O email é obrigatória.");
+                submitted = false;
+            }
+
+            if (!payload.password) {
+                errors.push("A senha é obrigatória.");
+                submitted = false;
+            }
+
+            if (!submitted) {
+                let message = "";
+                for (let error in errors) {
+                    message += errors[error] + "<br/>";
+                }
+                Vue.notify({
+                    group: "foo",
+                    type: "error",
+                    title: "Realizar Login",
+                    text: message,
+                    duration: 3000
+                });
+            } else {
+                authApi.login('/auth/signin', {
+                    email: payload.email,
+                    password: payload.password
+                }).then(response => {
+                    window.localStorage.token = `Bearer ${response.data.token}`;
+                    context.commit("UPDATE_USER", response.data.user);
+                    context.commit('UPDATE_LOGIN', true);
+                    if (response.data.user.role === "candidate")
+                        router.push('/candidates');
+                    else
+                        router.push('/company');
+                });
+            }
         },
         singUpCandidate(context, payload) {
             authApi.singUpCandidate('/auth/signup/candidate', payload).then(response => {
-                window.localStorage.token =  `Bearer ${response.data.token}`;
+                window.localStorage.token = `Bearer ${response.data.token}`;
                 context.commit("UPDATE_USER", response.data.user);
                 context.commit('UPDATE_LOGIN', true);
             })
