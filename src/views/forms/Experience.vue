@@ -5,13 +5,13 @@
         <b-col md="6">
           <b-form-group>
             <label for="company">Empresa</label>
-            <b-form-input type="text" id="company" placeholder="Ex: Microsoft"></b-form-input>
+            <b-form-input v-model="company" type="text" id="company" placeholder="Ex: Microsoft"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6">
           <b-form-group>
             <label for="office">Cargo</label>
-            <b-form-input type="text" id="office" placeholder="Ex: Desenvolvedor de backend"></b-form-input>
+            <b-form-input v-model="position" type="text" id="office" placeholder="Ex: Desenvolvedor de backend"></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
@@ -19,6 +19,7 @@
         <b-col md="12">
           <b-form-group label="Descrição" label-for="description">
             <b-form-input
+              v-model="description"
               id="description"
               :textarea="true"
               :rows="9"
@@ -78,6 +79,7 @@
   </form>
 </template>
 <script>
+import { mapFields } from "../../helpers/helpers";
 const months = [
   "Janeiro",
   "Fevereiro",
@@ -102,6 +104,14 @@ for (var year = currentDate.getFullYear(); year >= 1980; year--) {
   years.push(year);
 }
 export default {
+  computed: {
+    ...mapFields({
+      fields: ["company", "position", "state", "city", "description"],
+      base: "curriculum.professionalExperience",
+      mutation: "UPDATE_CURRICULUM",
+      store: "curriculum"
+    })
+  },
   data() {
     return {
       months: months,

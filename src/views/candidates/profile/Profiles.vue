@@ -2,34 +2,41 @@
 <template>
   <b-col md="9">
     <b-card header="Perfis" border-variant="warning">
-      <form class="formExperience">
-        <div class="experience">
-          <b-row>
-            <b-col md="12">
-              <b-form-group label="Github:" label-for="github">
-                <b-form-input type="text" id="github" placeholder="https://github.com/username"></b-form-input>
-              </b-form-group>
-            </b-col>
-          </b-row>
-        </div>
-        <hr>
-        <b-row>
-          <b-col md="12 text-right">
-            <b-button type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
-          </b-col>
-        </b-row>
-      </form>
+      <div v-for="social in socials" :key="social">
+        <profiles></profiles>
+      </div>
+      <b-button
+        @click.prevent="updateProfile()"
+        type="submit"
+        size="sm"
+        variant="primary"
+      >Salvar e continuar</b-button>
     </b-card>
   </b-col>
 </template>
 <script>
-
+import profiles from "../../forms/Profiles";
 const currentDate = new Date();
 const formExperience = document.querySelector(".formExperience");
 const experience = document.querySelector(".experience");
 
 export default {
   name: "Profiles",
+  components: {
+    profiles
+  },
+  data() {
+    return {
+      socials: this.$store.state.curriculum.curriculum.socialProfiles
+    };
+  },
+  methods: {
+    updateProfile() {
+      // console.log(this.$store.state.curriculum.curriculum.socialProfiles);
+
+      this.$store.dispatch("updateCurriculum", this.$store.state.curriculum.curriculum);
+    }
+  }
 };
 </script>
 

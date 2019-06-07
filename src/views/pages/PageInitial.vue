@@ -31,13 +31,15 @@
               </RegisterCandidate>
             </b-tab>
             <b-tab title="Cadastrar Empresa">
-              <RegisterHunter/>
+              <RegisterHunter>
+                <b-button @click.prevent="singUpHunter()"  type="submit" size="sm" variant="primary">Cadastrar</b-button>
+              </RegisterHunter>
             </b-tab>
           </b-tabs>
         </div>
       </b-col>
     </b-row>
-    <notifications group="foo" position="bottom center"/>
+
   </div>
 </template>
 
@@ -55,6 +57,9 @@ export default {
   methods:{
     singUpCandidate(){
       this.$store.dispatch("singUpCandidate", this.$store.state.auth.register);
+    },
+    singUpHunter(){
+      this.$store.dispatch("singUpHunter", this.$store.state.auth.registerHunter);
     },
     loginUser(){
       this.$store.dispatch("loginUser", this.$store.state.auth.logar);

@@ -18,7 +18,7 @@
 
         <b-row>
           <b-col md="12 text-right">
-            <b-button type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
+            <b-button @click.prevent="updateExperience()" type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
           </b-col>
         </b-row>
       </experience>
@@ -38,6 +38,9 @@ export default {
   methods: {
     addExperience: function() {
       forms.push("teste");
+    },
+    updateExperience(){
+      this.$store.dispatch("updateCurriculum", this.$store.state.curriculum.curriculum);
     }
   }
 };

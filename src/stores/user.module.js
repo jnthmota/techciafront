@@ -1,4 +1,6 @@
-import { userApi } from '../services/index'
+import { userApi, validation } from '../services/index';
+import router from '../router/index';
+import Vue from 'vue'
 export const user = {
     strict: true,
     state: {
@@ -25,13 +27,26 @@ export const user = {
         getUser(context) {
             userApi.get(`/users/me/`).then(response => {
                 context.commit("UPDATE_USER", response.data);
+                context.commit("UPDATE_CURRICULUM", response.data.curriculum);
                 context.commit('UPDATE_LOGIN', true);
             })
         },
-        updateUser(context, playload) {
-            userApi.put(`/users`, playload).then(response => {
-                console.log(response);
-            });
+        updateUser(context, payload) {
+            let submitted = validation.user(payload);
+
+            if (submitted) {
+                userApi.put(`/users`, payload).then(response => {
+                    Vue.notify({
+                        group: "foo",
+                        type: "success",
+                        title: "Dados Atualizados",
+                        text: "",
+                        duration: 3000
+                    });
+                    router.push("experience")
+
+                });
+            }
         }
     }
 }

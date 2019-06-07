@@ -1,6 +1,5 @@
-import { authApi } from '../services/index';
+import { authApi, validation } from '../services/index';
 import router from '../router/index';
-import Vue from 'vue'
 export const auth = {
     strict: true,
     state: {
@@ -9,7 +8,15 @@ export const auth = {
             name: "",
             email: "",
             password: "",
-            document: "46958999818"
+            document: "",
+            phone: "",
+            dateBirth: "2019-06-07T14:40:35.245Z",
+        },
+        registerHunter: {
+            name: "",
+            email: "",
+            password: "",
+            document: ""
         },
         logar: {
             email: "",
@@ -25,35 +32,15 @@ export const auth = {
         },
         UPDATE_REGISTER(state, payload) {
             state.register = Object.assign(state.register, payload);
+        },
+        UPDATE_REGISTERHUNTER(state, payload) {
+            state.registerHunter = Object.assign(state.registerHunter, payload);
         }
     },
     actions: {
         loginUser(context, payload) {
-            const errors = [];
-            let submitted = true;
-            if (!payload.email) {
-                errors.push("O email é obrigatória.");
-                submitted = false;
-            }
-
-            if (!payload.password) {
-                errors.push("A senha é obrigatória.");
-                submitted = false;
-            }
-
-            if (!submitted) {
-                let message = "";
-                for (let error in errors) {
-                    message += errors[error] + "<br/>";
-                }
-                Vue.notify({
-                    group: "foo",
-                    type: "error",
-                    title: "Realizar Login",
-                    text: message,
-                    duration: 3000
-                });
-            } else {
+            let submitted = validation.loginUser(payload);
+            if (submitted) {
                 authApi.login('/auth/signin', {
                     email: payload.email,
                     password: payload.password
@@ -69,11 +56,26 @@ export const auth = {
             }
         },
         singUpCandidate(context, payload) {
-            authApi.singUpCandidate('/auth/signup/candidate', payload).then(response => {
-                window.localStorage.token = `Bearer ${response.data.token}`;
-                context.commit("UPDATE_USER", response.data.user);
-                context.commit('UPDATE_LOGIN', true);
-            })
+            let submitted = validation.SingUp(payload);
+            if (submitted) {
+                authApi.singUpCandidate('/auth/signup/candidate', payload).then(response => {
+                    window.localStorage.token = `Bearer ${response.data.token}`;
+                    context.commit("UPDATE_USER", response.data.user);
+                    context.commit('UPDATE_LOGIN', true);
+                    router.push('/candidates');
+                })
+            }
+        },
+        singUpHunter(context, payload) {
+            let submitted = validation.SingUp(payload);
+            if (submitted) {
+                authApi.singUpCandidate('/auth/signup/company', payload).then(response => {
+                    window.localStorage.token = `Bearer ${response.data.token}`;
+                    context.commit("UPDATE_USER", response.data.user);
+                    context.commit('UPDATE_LOGIN', true);
+                    router.push('/company');
+                })
+            }
         }
     }
 }
