@@ -8,7 +8,7 @@
               {{candidate.name}}
               <div class="card-header-actions">
                 <b-link
-                  to="/vacancyCandidate"
+                  @click.prevent="associateCandidate(candidate._id)"
                   class="card-header-action btn-setting"
                 >Associar Candidato</b-link>
               </div>
@@ -31,7 +31,8 @@
                     {{candidate.phone}}
                   </b-col>
                 </b-row>
-                <br><br>
+                <br>
+                <br>
                 <b-row>
                   <b-col sm="12">
                     <label>
@@ -63,9 +64,13 @@
                     {{educa.course}}
                   </b-col>
                 </b-row>
-                <br><br>
-                
-                <b-row v-for="(experience, index) in candidate.curriculum.professionalExperience" v-bind:key="index">
+                <br>
+                <br>
+
+                <b-row
+                  v-for="(experience, index) in candidate.curriculum.professionalExperience"
+                  v-bind:key="index"
+                >
                   <b-col sm="4">
                     <label>
                       <b>Empresa:</b>
@@ -111,6 +116,16 @@ export default {
           this.candidates = this.$store.state.vacancy.candidates;
         }, 1000);
       });
+  },
+  methods: {
+    associateCandidate(id) {
+      let data = {
+        vacancyId: "5cffef2d28c87f0017639656",
+        candidateId: id
+      };
+      console.log(data);
+      this.$store.dispatch("associateCandidate", data);
+    }
   }
 };
 </script>

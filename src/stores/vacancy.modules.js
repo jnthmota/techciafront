@@ -48,6 +48,17 @@ export const vacancy = {
             vacancyApi.getCandidate(`/vacancys/${payload}/candidates`).then(response => {
                 context.commit("UPDATE_VACANCYSCANDIDATES", response.data);
             })
+        },
+        associateCandidate(context, payload){
+            vacancyApi.associateCandidate(`/vacancys/select-candidate`, payload).then(res => {
+                Vue.notify({
+                    group: "foo",
+                    type: "success",
+                    title: "Candidato Associado",
+                    text: "",
+                    duration: 3000
+                });
+            });
         }
     }
 }
