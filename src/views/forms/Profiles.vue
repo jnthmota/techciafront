@@ -4,7 +4,7 @@
           <b-row>
             <b-col md="12">
               <b-form-group label="Github:" label-for="github">
-                <b-form-input  type="text" id="github" placeholder="https://github.com/username"></b-form-input>
+                <b-form-input v-model="url" type="text" id="github" placeholder="https://github.com/username"></b-form-input>
               </b-form-group>
             </b-col>
           </b-row>

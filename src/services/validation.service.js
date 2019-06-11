@@ -53,7 +53,7 @@ export const validation = {
             errors.push("O documento é obrigatório.");
             submitted = false;
         }
-        
+
 
         if (!submitted) {
             let message = "";

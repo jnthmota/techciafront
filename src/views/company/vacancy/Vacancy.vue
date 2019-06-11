@@ -26,9 +26,6 @@
                 <b-link to="/formvacancy" class="card-header-action btn-setting">
                   <i class="icon-pencil"></i>
                 </b-link>
-                <b-link href="#" class="card-header-action btn-close" v-on:click="show = !show">
-                  <i class="icon-close"></i>
-                </b-link>
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
                   <i class="icon-arrow-up"></i>
                 </b-link>

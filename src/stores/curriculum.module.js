@@ -1,46 +1,23 @@
 import { curriculumsApi, validation } from '../services/index';
 import router from '../router/index';
-import Vue from 'vue'
+import Vue from 'vue';
+import {
+    education, professionalExperience, languages, socialProfiles,
+    citiesForWork, programmingLanguages
+} from './curriculums.model'
+
+
 export const curriculum = {
     strict: true,
+
     state: {
         curriculum: {
             level: "",
-            education: [
-                {
-                    institution: "",
-                    degreeSchooling: "",
-                    course: "",
-                    city: "",
-                    state: "",
-                    initialDate: "",
-                    finalDate: ""
-                }
-            ],
-            professionalExperience: [{
-                initialDate: "",
-                finalDate: "",
-                city: "",
-                state: "",
-                company: "",
-                position: "",
-                description: ""
-            }],
-            languages: [
-                {
-                    language: "",
-                    writtenLevel: "Básico",
-                    readingLevel: "Básico",
-                    conversationLevel: "Básico"
-                }
-            ],
+            education: [],
+            professionalExperience: [],
+            languages: [],
             interestCareer: "",
-            socialProfiles: [
-                {
-                    "name": "github",
-                    "url": ""
-                }
-            ],
+            socialProfiles: [],
             salaryPretension: 0,
             offerType: [
                 ""
@@ -48,24 +25,10 @@ export const curriculum = {
             workType: [
                 ""
             ],
-            citiesForWork: [
-                {
-                    city: "",
-                    state: ""
-                }
-            ],
-            skills: [
-                ""
-            ],
-            certificates: [
-                ""
-            ],
-            programmingLanguages: [
-                {
-                    name: "",
-                    yearExperience: 0
-                }
-            ]
+            citiesForWork: [],
+            skills: [],
+            certificates: [],
+            programmingLanguages: []
         }
     },
     mutations: {
@@ -74,11 +37,18 @@ export const curriculum = {
         }
     },
     actions: {
-        updateCurriculum(context, payload) {
+        async updateCurriculum(context, payload) {
             let submitted = true;
+            await payload.education.forEach(elemento => delete elemento._id);
+            await payload.professionalExperience.forEach(elemento => delete elemento._id);
+            await payload.languages.forEach(elemento => delete elemento._id);
+            await payload.programmingLanguages.forEach(elemento => delete elemento._id);
+            await payload.citiesForWork.forEach(elemento => delete elemento._id);
+            await payload.socialProfiles.forEach(elemento => delete elemento._id);
 
             if (submitted) {
-                curriculumsApi.put(`/curriculums`, payload).then(response => {
+                console.log(payload.education);
+                await curriculumsApi.put(`/curriculums`, payload).then(response => {
                     Vue.notify({
                         group: "foo",
                         type: "success",
@@ -88,6 +58,14 @@ export const curriculum = {
                     });
                 });
             }
+        },
+        pushProfessionalExperience(context, payload) {
+            payload.professionalExperience.push(professionalExperience);
+            context.commit("UPDATE_CURRICULUM", payload);
+        },
+        pushSchooling(context, payload) {
+            payload.education.push(education);
+            context.commit("UPDATE_CURRICULUM", payload);
         }
     }
 }

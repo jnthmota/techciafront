@@ -3,22 +3,21 @@
   <b-col md="9">
     <b-card header="Perfis" border-variant="warning">
       <div v-for="social in socials" :key="social">
-        <profiles></profiles>
+        <profiles>
+          <b-button
+            @click.prevent="updateProfile()"
+            type="submit"
+            size="sm"
+            variant="primary"
+          >Salvar e continuar</b-button>
+        </profiles>
       </div>
-      <b-button
-        @click.prevent="updateProfile()"
-        type="submit"
-        size="sm"
-        variant="primary"
-      >Salvar e continuar</b-button>
     </b-card>
   </b-col>
 </template>
 <script>
 import profiles from "../../forms/Profiles";
 const currentDate = new Date();
-const formExperience = document.querySelector(".formExperience");
-const experience = document.querySelector(".experience");
 
 export default {
   name: "Profiles",
@@ -32,9 +31,10 @@ export default {
   },
   methods: {
     updateProfile() {
-      // console.log(this.$store.state.curriculum.curriculum.socialProfiles);
-
-      this.$store.dispatch("updateCurriculum", this.$store.state.curriculum.curriculum);
+      this.$store.dispatch(
+        "updateCurriculum",
+        this.$store.state.curriculum.curriculum
+      );
     }
   }
 };

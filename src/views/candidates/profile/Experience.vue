@@ -2,26 +2,32 @@
 <template>
   <b-col md="9">
     <b-card header="Experiências" border-variant="warning">
-      <experience>
-        <b-row>
-          <b-col md="12">
-            <b-button
-              @click="addExperience()"
-              type="button"
-              size="sm"
-              variant="primary"
-            >Adicionar Experiência</b-button>
-          </b-col>
-        </b-row>
-
-        <hr>
-
-        <b-row>
-          <b-col md="12 text-right">
-            <b-button @click.prevent="updateExperience()" type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
-          </b-col>
-        </b-row>
-      </experience>
+      <div
+        v-for="(experience, index) in $store.state.curriculum.curriculum.professionalExperience"
+        :key="index"
+      >
+        <experience :professionalExperience="experience"/>
+      </div>
+      <b-row>
+        <b-col md="12">
+          <b-button
+            @click="addExperience()"
+            type="button"
+            size="sm"
+            variant="primary"
+          >Adicionar Experiência</b-button>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col md="12 text-right">
+          <b-button
+            @click.prevent="updateExperience()"
+            type="submit"
+            size="sm"
+            variant="primary"
+          >Salvar e continuar</b-button>
+        </b-col>
+      </b-row>
     </b-card>
   </b-col>
 </template>
@@ -37,10 +43,16 @@ export default {
   },
   methods: {
     addExperience: function() {
-      forms.push("teste");
+      this.$store.dispatch(
+        "pushProfessionalExperience",
+        this.$store.state.curriculum.curriculum
+      );
     },
-    updateExperience(){
-      this.$store.dispatch("updateCurriculum", this.$store.state.curriculum.curriculum);
+    updateExperience() {
+      this.$store.dispatch(
+        "updateCurriculum",
+        this.$store.state.curriculum.curriculum
+      );
     }
   }
 };

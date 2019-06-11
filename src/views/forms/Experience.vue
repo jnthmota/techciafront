@@ -5,13 +5,47 @@
         <b-col md="6">
           <b-form-group>
             <label for="company">Empresa</label>
-            <b-form-input v-model="company" type="text" id="company" placeholder="Ex: Microsoft"></b-form-input>
+            <b-form-input
+              v-model="professionalExperience.company"
+              type="text"
+              id="company"
+              placeholder="Ex: Microsoft"
+            ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6">
           <b-form-group>
             <label for="office">Cargo</label>
-            <b-form-input v-model="position" type="text" id="office" placeholder="Ex: Desenvolvedor de backend"></b-form-input>
+            <b-form-input
+              v-model="professionalExperience.position"
+              type="text"
+              id="office"
+              placeholder="Ex: Desenvolvedor de backend"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col md="6">
+          <b-form-group>
+            <label for="state">Estado</label>
+            <b-form-input
+              v-model="professionalExperience.state"
+              type="text"
+              id="state"
+              placeholder="Ex: São Paulo"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col md="6">
+          <b-form-group>
+            <label for="city">Cidade</label>
+            <b-form-input
+              v-model="professionalExperience.city"
+              type="text"
+              id="São Paulo"
+              placeholder="Ex: São Paulo"
+            ></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
@@ -19,9 +53,9 @@
         <b-col md="12">
           <b-form-group label="Descrição" label-for="description">
             <b-form-input
-              v-model="description"
               id="description"
               :textarea="true"
+              v-model="professionalExperience.description"
               :rows="9"
               placeholder="Breve descrição sobre o seu trabalho"
             ></b-form-input>
@@ -97,8 +131,6 @@ const months = [
 
 const years = [];
 const currentDate = new Date();
-const formExperience = document.querySelector(".formExperience");
-const experience = document.querySelector(".experience");
 
 for (var year = currentDate.getFullYear(); year >= 1980; year--) {
   years.push(year);
@@ -112,12 +144,23 @@ export default {
       store: "curriculum"
     })
   },
+  props: {
+    professionalExperience: {
+      type: Object,
+      _id: String,
+      initialDate: String,
+      finalDate: String,
+      city: String,
+      state: String,
+      company: String,
+      position: String,
+      description: String
+    }
+  },
   data() {
     return {
       months: months,
-      years: years,
-      formExperience: formExperience,
-      experience: experience
+      years: years
     };
   }
 };

@@ -39,7 +39,7 @@
         </div>
       </b-col>
     </b-row>
-
+    <notifications group="foo" position="bottom center"/>
   </div>
 </template>
 
@@ -176,13 +176,13 @@ export default {
   color: #fff;
 }
 .banner .auth .auth-sec .tab-content form button {
-  border: none;
-  background: #0099ff;
-  border-radius: 30px;
-  padding: 8px 30px;
-  color: #fff;
-  float: left;
-  font-size: 14px;
+  border: none!important;
+  background: #0099ff!important;
+  border-radius: 30px!important;
+  padding: 8px 30px!important;
+  color: #fff!important;
+  float: left!important;
+  font-size: 14px!important;
 }
 
 .notification-title{
