@@ -3,7 +3,7 @@
   <b-col md="9">
     <b-card header="Preferências" border-variant="warning">
       <preferences>
-        <b-button type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
+        <b-button @click.prevent="updatePreferences()" type="submit" size="sm" variant="primary">Salvar e continuar</b-button>
       </preferences>
     </b-card>
   </b-col>
@@ -19,6 +19,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    updatePreferences(){
+      this.$store.dispatch("updateCurriculum", this.$store.state.curriculum.curriculum);
+    }
   }
 };
 </script>

@@ -66,6 +66,14 @@ export const curriculum = {
         pushSchooling(context, payload) {
             payload.education.push(education);
             context.commit("UPDATE_CURRICULUM", payload);
+        },
+        pushProgrammingLanguages(context, payload) {
+            payload.programmingLanguages.push(programmingLanguages);
+            context.commit("UPDATE_CURRICULUM", payload);
+        },
+        pushLanguage(context, payload) {
+            payload.languages.push(languages);
+            context.commit("UPDATE_CURRICULUM", payload);
         }
     }
 }

@@ -4,13 +4,13 @@ export const education = {
     course: "",
     city: "",
     state: "",
-    initialDate: "",
-    finalDate: ""
+    initialDate: Date.now(),
+    finalDate: Date.now(),
 };
 
 export const professionalExperience = {
-    initialDate: "",
-    finalDate: "",
+    initialDate: Date.now(),
+    finalDate: Date.now(),
     city: "",
     state: "",
     company: "",

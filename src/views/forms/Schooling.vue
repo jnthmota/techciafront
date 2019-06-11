@@ -62,7 +62,14 @@
         </b-col>
         <b-col md="3">
           <b-form-group label="Ano de conclusão" label-for="endDate">
-            <b-form-select id="endDate" :plain="true" :options="years" value="Selecione um ano"></b-form-select>
+            <b-form-select
+              v-model="year"
+              @change="changeDate($event)"
+              id="endDate"
+              :plain="true"
+              :options="years"
+              value="Selecione um ano"
+            ></b-form-select>
           </b-form-group>
         </b-col>
       </b-row>
@@ -101,7 +108,8 @@ export default {
   data() {
     return {
       level: level,
-      years: years
+      years: years,
+      year: ""
     };
   },
   props: {
@@ -113,6 +121,18 @@ export default {
       state: "",
       initialDate: "",
       finalDate: ""
+    }
+  },
+  beforeMount() {
+    let endDate = new Date(this.schooling.finalDate);
+    this.year = endDate.getFullYear();
+  },
+  methods:{
+    changeDate(e) {
+      let dateInit = new Date(this.year - 4, "01", "01");
+      let dateEnd = new Date(this.year, "11", "01");
+      this.schooling.initialDate = dateInit.toISOString();
+      this.schooling.finalDate = dateEnd.toISOString();
     }
   }
 };

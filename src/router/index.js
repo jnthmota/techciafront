@@ -17,11 +17,14 @@ const ExperienceCandidate = () => import('@/views/candidates/profile/Experience'
 const SchoolingCandidate = () => import('@/views/candidates/profile/Schooling')
 const ProfilesCandidate = () => import('@/views/candidates/profile/Profiles')
 const PreferencesCandidate = () => import('@/views/candidates/profile/Preferences')
+const SkillsCandidate = () => import('@/views/candidates/profile/Skills')
+const LanguageCandidate = () => import('@/views/candidates/profile/Language')
 
 
 // Company
 const Vacancys = () => import('@/views/company/vacancy/Vacancy')
-const VacancyForm = () => import('@/views/company/vacancy/VacancyForm')
+const VacancyCreate = () => import('@/views/company/vacancy/VacancyCreate')
+const VacancyCandidate = () => import('@/views/company/vacancy/CandidateVacancy')
 
 Vue.use(Router)
 
@@ -66,7 +69,15 @@ export default new Router({
               path: 'preferences',
               name: 'Preferences',
               component: PreferencesCandidate,
-            },
+            },{
+              path: 'skill',
+              name: 'Skill',
+              component: SkillsCandidate,
+            },{
+              path: 'language',
+              name: 'Language',
+              component: LanguageCandidate,
+            }
           ]
         }
       ]
@@ -80,10 +91,16 @@ export default new Router({
         name: "Vacancy",
         component: Vacancys
       },{
-        path: "/formvacancy",
-        name: "Form Vacancy",
-        component: VacancyForm
-      }]
+        path: "/createVacancy",
+        name: "Vacancy",
+        component: VacancyCreate
+      },
+      {
+        path: "/vacancyCandidate",
+        name: "vacancyCandidate",
+        component: VacancyCandidate
+      }
+    ]
     }, {
       path: '/',
       redirect: '/',
