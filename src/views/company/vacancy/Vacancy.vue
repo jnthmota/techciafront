@@ -6,28 +6,25 @@
         <h1>VAGAS</h1>
       </b-col>
       <b-col md="2">
-        <b-button  variant="primary">
+        <b-button variant="primary">
           <i class="fa fa-plus"></i>&nbsp;Cadastrar Vaga
         </b-button>
       </b-col>
     </b-row>
     <br>
     <br>
-    <b-row>
+    <b-row v-for="(vacancy, index) in vacancys" v-bind:key="index">
       <b-col sm="12" md="12">
         <transition name="fade">
           <b-card class="card-accent-warning" no-body v-if="show">
             <div slot="header">
-              Desenvolvedor back end
+              {{vacancy.position}}
               <div class="card-header-actions">
-                <b-link href="#" class="card-header-action btn-setting">
+                <b-link to="/vacancyCandidate" class="card-header-action btn-setting">
                   <i class="cui-magnifying-glass"></i>
                 </b-link>
-                <b-link to="/formvacancy" class="card-header-action btn-setting">
+                <b-link to="/createVacancy" class="card-header-action btn-setting">
                   <i class="icon-pencil"></i>
-                </b-link>
-                <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
-                  <i class="icon-arrow-up"></i>
                 </b-link>
               </div>
             </div>
@@ -36,18 +33,18 @@
                 <b-row>
                   <b-col md="3">
                     <b>Tipo de Oferta:</b>
-                    <br>CLT
+                    <br>{{vacancy.offerType[0]}}
                   </b-col>
                   <b-col md="3">
                     <b>Tipo de Trabalho:</b>
-                    <br>Presencial
+                    <br>{{vacancy.workType[0]}}
                   </b-col>
                   <b-col md="3">
                     <b>Escolaridade Mínima:</b>
                     <br>Superior
                   </b-col>
                   <b-col md="3">
-                    <b>Curso: </b>
+                    <b>Curso:</b>
                     <br>Ciência da Computação
                   </b-col>
                 </b-row>
@@ -58,15 +55,18 @@
                     <b>Idiomas:</b>
                   </b-col>
                 </b-row>
-                <b-row>
+                <b-row v-for="(language, index) in vacancy.languages" v-bind:key="index">
                   <b-col md="3">
-                    <b>Leitura:</b> Avançado
+                    <b>Idioma:</b> {{language.language}}
                   </b-col>
                   <b-col md="3">
-                    <b>Conversação:</b> Avançado
+                    <b>Leitura:</b> {{language.readingLevel}}
                   </b-col>
                   <b-col md="3">
-                    <b>Escrita:</b> Avançado
+                    <b>Conversação:</b> {{language.conversationLevel}}
+                  </b-col>
+                  <b-col md="3">
+                    <b>Escrita:</b> {{language.writtenLevel}}
                   </b-col>
                 </b-row>
                 <br>
@@ -74,27 +74,17 @@
                 <b-row>
                   <b-col md="12">
                     <b>Principais Habilidades :</b>
-                    <b-badge pill variant="dark">APIs</b-badge>
-                    <b-badge pill variant="dark">Node.JS</b-badge>
-                    <b-badge pill variant="dark">PLSQL</b-badge>
-                    <b-badge pill variant="dark">BD NOSQL</b-badge>
+                    <b-badge v-for="(skill, index) in vacancy.skills" v-bind:key="index" pill variant="dark">
+                      {{skill.experience}}
+                    </b-badge>
                   </b-col>
                 </b-row>
                 <br>
                 <br>
                 <b-row>
                   <b-col md="12">
-                    <b>Outras Habilidades :</b>
-                    <b-badge pill variant="primary">HTML</b-badge>
-                    <b-badge pill variant="primary">CSS</b-badge>
-                    <b-badge pill variant="primary">Linux</b-badge>
-                    <b-badge pill variant="primary">C</b-badge>
-                  </b-col>
-                </b-row>
-                <b-row>
-                  <b-col md="12">
-                    <b>Descrição da Vaga :</b><br>
-                    Estamos buscando um Backend Software Engineer apaixonado por tecnologia e que não tenha medo de sujar as mãos de graxa e colocar a mão na massa. Procuramos aqueles que não esperam acontecer, que são proativos e gostam principalmente de resolver problemas.
+                    <b>Descrição da Vaga :</b>
+                    <br>{{vacancy.description}}
                   </b-col>
                 </b-row>
                 <br>
@@ -108,17 +98,33 @@
   </div>
 </template>
 <script>
+import { setTimeout } from "timers";
 export default {
   name: "Vancancy",
   data: function() {
     return {
-      show: true
+      show: true,
+      vacancys: [],
+      
     };
+  },
+  beforeMount() {
+    this.$store.dispatch("getVacancy").then(res => {
+      setTimeout(res => {
+        this.vacancys = this.$store.state.vacancy.vacancys;
+        console.log(this.vacancys);
+      }, 1000);
+    });
   }
 };
 </script>
 
-<style scoped>
+<style >
+.container {
+    max-width: 80% !important; 
+    width: 100%!important;
+    margin: 0 auto !important;
+}
 .fade-enter-active {
   transition: all 0.3s ease;
 }

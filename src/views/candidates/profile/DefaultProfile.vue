@@ -12,13 +12,16 @@
           <router-link to="/candidates/schooling" active-class="active">Escolaridade</router-link>
         </li>
         <li>
+          <router-link to="/candidates/language" active-class="active">Idiomas</router-link>
+        </li>
+        <li>
           <router-link to="/candidates/profiles" active-class="active">Perfis</router-link>
         </li>
         <li>
           <router-link to="/candidates/preferences" active-class="active">Preferências</router-link>
         </li>
         <li>
-          <router-link to="/candidates/skills" active-class="active">Habilidades</router-link>
+          <router-link to="/candidates/skill" active-class="active">Habilidades</router-link>
         </li>
       </ul>
     </b-col>

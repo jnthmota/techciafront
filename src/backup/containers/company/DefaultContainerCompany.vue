@@ -5,7 +5,7 @@
         <img class="navbar-brand-full" src="img/logo.png"  alt="CoreUI Logo">
       </b-link>
       <b-navbar-nav class="d-md-down-none">
-        <b-nav-item class="px-3" to="/company/vacancy">Minhas Vagas</b-nav-item>
+        <b-nav-item class="px-3" to="/company">Minhas Vagas</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item class="d-md-down-none">

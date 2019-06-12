@@ -76,6 +76,12 @@ export const auth = {
                     router.push('/company');
                 })
             }
+        },
+        logout(context){
+            window.localStorage.clear();
+            context.commit("UPDATE_USER", null);
+            context.commit('UPDATE_LOGIN', false);
+            router.push("/");
         }
     }
 }

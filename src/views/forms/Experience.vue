@@ -68,14 +68,17 @@
             <b-row>
               <b-col md="7">
                 <b-form-select
+                  @change="changeDate($event)"
+                  v-model="monthInit"
                   id="monthStartDate"
                   :plain="true"
                   :options="months"
-                  value="Please select"
                 ></b-form-select>
               </b-col>
               <b-col md="5">
                 <b-form-select
+                  v-model="yearInit"
+                  @change="changeDate($event)"
                   id="monthStartDate"
                   :plain="true"
                   :options="years"
@@ -91,6 +94,8 @@
               <b-col md="7">
                 <b-form-select
                   id="monthEndDate"
+                  @change="changeDate($event)"
+                  v-model="monthEnd"
                   :plain="true"
                   :options="months"
                   value="Please select"
@@ -98,6 +103,8 @@
               </b-col>
               <b-col md="5">
                 <b-form-select
+                  v-model="yearEnd"
+                  @change="changeDate($event)"
                   id="yearEndDate"
                   :plain="true"
                   :options="years"
@@ -136,14 +143,6 @@ for (var year = currentDate.getFullYear(); year >= 1980; year--) {
   years.push(year);
 }
 export default {
-  computed: {
-    ...mapFields({
-      fields: ["company", "position", "state", "city", "description"],
-      base: "curriculum.professionalExperience",
-      mutation: "UPDATE_CURRICULUM",
-      store: "curriculum"
-    })
-  },
   props: {
     professionalExperience: {
       type: Object,
@@ -157,11 +156,35 @@ export default {
       description: String
     }
   },
+  beforeMount() {
+    let initDate = new Date(this.professionalExperience.initialDate);
+    let endDate = new Date(this.professionalExperience.finalDate);
+    this.monthInit = this.months[initDate.getMonth()];
+    this.monthEnd = this.months[endDate.getMonth()];
+    this.yearInit = initDate.getFullYear();
+    this.yearEnd = endDate.getFullYear();
+  },
   data() {
     return {
       months: months,
-      years: years
+      years: years,
+      monthInit: "",
+      monthEnd: "",
+      yearInit: "",
+      yearEnd: ""
     };
+  },
+  methods: {
+    changeDate(e){
+      let  initMonth = this.months.indexOf(this.monthInit);
+      let  endMonth = this.months.indexOf(this.monthEnd);
+
+      let dateInit =  new Date(this.yearInit, initMonth, "01");
+      let dateEnd = new Date(this.yearEnd, endMonth, "01");
+
+      this.professionalExperience.initialDate = dateInit.toISOString();
+      this.professionalExperience.finalDate =  dateEnd.toISOString();
+    }
   }
 };
 </script>
