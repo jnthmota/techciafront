@@ -11,12 +11,7 @@
         <b-tabs>
           <b-tab title="Login" active>
             <Login>
-              <b-button
-                @click.prevent="login()"
-                type="submit"
-                size="sm"
-                variant="primary"
-              >Entrar</b-button>
+              <b-button @click.prevent="login()" type="submit" size="sm" variant="primary">Entrar</b-button>
             </Login>
           </b-tab>
           <!-- <b-tab title="Cadastrar Candidato">
@@ -38,7 +33,7 @@
                 variant="primary"
               >Cadastrar</b-button>
             </RegisterHunter>
-          </b-tab> -->
+          </b-tab>-->
         </b-tabs>
       </div>
     </b-col>
@@ -56,9 +51,8 @@ export default {
     RegisterCandidate
   },
   methods: {
-    async login(){
-      await this.$store.dispatch('login', this.$store.getters.login);
-      this.$router.push("/")
+    login() {
+      this.$store.dispatch("login", this.$store.getters.login);
     }
   }
 };

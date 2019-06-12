@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Você está logado como candidato</h1>
+    <h1>Você está logado como empresa</h1>
   </div>
 </template>
 <script>
 export default {
-  name: "Candidate"
+  name: "Company"
 };
 </script>
