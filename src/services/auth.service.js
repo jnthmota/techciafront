@@ -5,10 +5,10 @@ const axiosInstance = axios.create({
 });
 
 export const authApi = {
-  login(endpoint, body) {
-    return axiosInstance.post(endpoint, body);
+  login(body) {
+    return axiosInstance.post('/auth/signin', body);
   },
-  singUpCandidate(endpoint, body) {
-    return axiosInstance.post(endpoint, body);
+  singUpCandidate(body) {
+    return axiosInstance.post(body);
   }
 };
