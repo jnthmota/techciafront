@@ -3,7 +3,7 @@ import {actions} from './actions';
 import {mutations} from './mutations';
 import {getters} from './getters';
 
-export const auth =  {
+export const user =  {
     state,
     actions,
     mutations,

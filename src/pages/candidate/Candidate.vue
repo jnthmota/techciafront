@@ -5,6 +5,9 @@
 </template>
 <script>
 export default {
-  name: "Candidate"
+  name: "Candidate",
+  beforeMount(){
+    this.$store.dispatch('getUser');
+  }
 };
 </script>

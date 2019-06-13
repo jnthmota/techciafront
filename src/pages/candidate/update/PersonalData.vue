@@ -1,23 +1,18 @@
 <template>
   <div>
     <b-card header="Dados Pessoais" border-variant="warning">
-      <personaldata>
-        <b-button
-          @click.prevent="updateUser()"
-          type="submit"
-          size="sm"
-          variant="primary"
-        >Salvar e continuar</b-button>
-      </personaldata>
+      <personalData>
+        
+      </personalData>
     </b-card>
   </div>
 </template>
 <script>
-import personaldata from '@/components/forms/PersonalData'
+import personalData from '@/components/forms/PersonalData'
 export default {
   name: "PersonalData",
-  component: {
-      personaldata
+  components: {
+      personalData
   }
 };
 </script>

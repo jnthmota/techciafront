@@ -31,7 +31,7 @@
         </li>
       </ul>
     </b-col>
-    <b-col md="10">
+    <b-col md="9">
       <router-view></router-view>
     </b-col>
   </b-row>

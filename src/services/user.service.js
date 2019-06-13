@@ -19,8 +19,8 @@ axiosInstance.interceptors.request.use(
 )
 
 export const userApi = {
-    get(endpoint) {
-        return axiosInstance.get(endpoint);
+    get() {
+        return axiosInstance.get('/users/me');
     },
     put(endpoint, body) {
         return axiosInstance.put(endpoint, body);

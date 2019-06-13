@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="personalDataCandidate">
     <div class="Personal Data">
       <b-form-group>
         <label for="name">Nome Completo</label>
@@ -16,37 +16,58 @@
       </b-form-group>
       <b-form-group>
         <label for="document">CPF</label>
-        <b-form-input
+        <masked-input
+          :mask="[/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
           v-model="document"
-          type="document"
+          type="text"
           id="document"
+          placeholder="Digite seu CPF"
           disabled
-          placeholder="Ex: 46958999819"
-        ></b-form-input>
+        ></masked-input>
       </b-form-group>
       <b-form-group>
         <label for="phone">Celular</label>
-        <b-form-input v-model="phone" type="text" id="phone" placeholder="ex: (11) 94805-3050"></b-form-input>
+        <masked-input
+          :mask="['(', /[1-9]/, /\d/, ')', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]"
+          v-model="phone"
+          type="text"
+          id="phone"
+          placeholder="Digite seu Telfone"
+        ></masked-input>
       </b-form-group>
     </div>
 
     <hr>
     <b-form-group class="text-right">
-      <slot></slot>
+      <b-button
+          @click.prevent="updateUser()"
+          type="submit"
+          size="sm"
+          variant="primary"
+        >Salvar e continuar</b-button>
     </b-form-group>
   </form>
 </template>
 <script>
+import { required, minLength, between } from 'vuelidate/lib/validators'
+import MaskedInput from "vue-text-mask";
 import { mapFields } from "@/configs/helpers";
 export default {
   computed: {
     ...mapFields({
       fields: ["name", "email", "document", "phone"],
       base: "user",
-      mutation: "UPDATE_USER",
+      mutation: "setUser",
       store: "user"
     })
+  },
+  components: {
+    MaskedInput
+  },
+   validations: {
+    email: {
+      required
+    }
   }
 };
 </script>
-
