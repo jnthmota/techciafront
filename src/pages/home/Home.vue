@@ -14,7 +14,7 @@
               <b-button @click.prevent="login()" type="submit" size="sm" variant="primary">Entrar</b-button>
             </Login>
           </b-tab>
-          <!-- <b-tab title="Cadastrar Candidato">
+          <b-tab title="Cadastrar Candidato">
             <RegisterCandidate>
               <b-button
                 @click.prevent="singUpCandidate()"
@@ -24,7 +24,7 @@
               >Cadastrar</b-button>
             </RegisterCandidate>
           </b-tab>
-          <b-tab title="Cadastrar Empresa">
+          <!-- <b-tab title="Cadastrar Empresa">
             <RegisterHunter>
               <b-button
                 @click.prevent="singUpHunter()"
@@ -53,6 +53,10 @@ export default {
   methods: {
     login() {
       this.$store.dispatch("login", this.$store.getters.login);
+
+    },
+    singUpCandidate() {
+      this.$store.dispatch("registerCandidate", this.$store.getters.registerCandidate);
     }
   }
 };

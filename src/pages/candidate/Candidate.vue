@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Você está logado como candidato</h1>
+  <div class="candidate">
+    <router-view></router-view>
   </div>
 </template>
 <script>

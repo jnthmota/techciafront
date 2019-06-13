@@ -27,7 +27,7 @@
   width: 100%;
   margin: 0;
   height: 60px;
-  padding: 0;
+  padding: 0px 50px;
   background-color: #fff;
   position: relative;
   box-shadow: 1px 0px 5px rgba(77, 77, 77, 0.2);
@@ -36,7 +36,16 @@
   div {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 10px 0px;
+    padding: 0 0px;
+  }
+  .logo {
+    margin-top: 10px;
+  }
+  ul {
+    li.nav-item {
+      list-style: none;
+      text-align: right;
+    }
   }
 }
 
@@ -110,6 +119,7 @@
             font-size: 14px;
             padding: 0 30px;
             color: #fff;
+            width: 100%;
           }
           button {
             border: none;
@@ -122,6 +132,33 @@
           }
         }
       }
+    }
+  }
+}
+
+.candidate{
+  padding: 50px;
+}
+
+.updateCandidate {
+  li {
+    list-style: none;
+    padding: 5px 0;
+    text-align: right;
+    a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #7e8996;
+      display: block;
+      padding: 10px 5px;
+    }
+    a.active {
+      border-right: 3px solid #ff9900;
+      font-weight: 800;
+      color: #000;
+    }
+    .notification-title {
+      font-size: 18px;
     }
   }
 }

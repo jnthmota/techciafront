@@ -16,6 +16,13 @@ export const authApi = {
     });
   },
   singUpCandidate(body) {
-    return axiosInstance.post(body);
+    return axiosInstance.post('/auth/signup/candidate', body).catch(function (error) {
+      if (error.response && error.response.data.statusCode == 400) {
+        notification.error("Cadastrar Candidato", error.response.data.message);
+      } else {
+        console.log(error.response.data);
+        notification.error("Cadastrar Candidato", "Erro de comunicação com a api");
+      }
+    });
   }
 };

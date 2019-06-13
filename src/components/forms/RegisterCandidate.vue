@@ -7,10 +7,22 @@
       <b-form-input v-model="email" type="text" id="email" placeholder="Digite seu email"></b-form-input>
     </b-form-group>
     <b-form-group>
-      <b-form-input v-model="document" type="text" id="document" placeholder="Digite seu CPF"></b-form-input>
+      <masked-input
+        :mask="[/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
+        v-model="document"
+        type="text"
+        id="document"
+        placeholder="Digite seu CPF"
+      ></masked-input>
     </b-form-group>
     <b-form-group>
-      <b-form-input v-model="phone" type="text" id="phone" placeholder="Digite seu celular"></b-form-input>
+      <masked-input
+        :mask="['(', /[1-9]/, /\d/, ')', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]"
+        v-model="phone"
+        type="text"
+        id="phone"
+        placeholder="Digite seu Telfone"
+      ></masked-input>
     </b-form-group>
     <b-form-group>
       <b-form-input v-model="password" type="password" id="password" placeholder="Digite sua senha"></b-form-input>
@@ -23,14 +35,18 @@
 
 <script>
 import { mapFields } from "@/configs/helpers.js";
+import MaskedInput from "vue-text-mask";
 export default {
-  // computed: {
-  //   ...mapFields({
-  //     fields: ["name", "email", "password", "document", "phone"],
-  //     base: 'register',
-  //     mutation: "UPDATE_REGISTER",
-  //     store: "auth"
-  //   })
-  // },
+  computed: {
+    ...mapFields({
+      fields: ["name", "email", "password", "document", "phone"],
+      base: "registerCandidate",
+      mutation: "setRegisterCandidate",
+      store: "auth"
+    })
+  },
+  components: {
+    MaskedInput
+  }
 };
 </script>

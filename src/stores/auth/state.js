@@ -1,5 +1,6 @@
 export const state = {
     isLogin: false,
+    typeUser: "",
     registerHunter: {
         name: "",
         email: "",
