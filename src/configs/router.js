@@ -8,6 +8,12 @@ const Company = () => import('@/pages/company/Company')
 // CANDIDATE
 const CandidateUpdate = () => import('@/pages/candidate/update/CandidateUpdate');
 const CandidatePersonalData = () => import('@/pages/candidate/update/PersonalData');
+const CandidateAddress = () => import('@/pages/candidate/update/Address');
+const CandidateExperience = () => import('@/pages/candidate/update/Experience');
+const CandidateSchooling = () => import('@/pages/candidate/update/Schooling');
+const CandidateLanguage = () => import('@/pages/candidate/update/Language');
+const CandidateProfiles = () => import('@/pages/candidate/update/Profiles');
+const CandidatePreferences = () => import('@/pages/candidate/update/Preferences');
 
 
 Vue.use(Router)
@@ -38,34 +44,41 @@ export default new Router({
               name: 'CandidatePersonalData',
               component: CandidatePersonalData,
             },
-            // {
-            //   path: 'experience',
-            //   name: 'Experience',
-            //   component: ExperienceCandidate,
-            // },
-            // {
-            //   path: 'schooling',
-            //   name: 'Schooling',
-            //   component: SchoolingCandidate,
-            // },
-            // {
-            //   path: 'profiles',
-            //   name: 'Profiles',
-            //   component: ProfilesCandidate,
-            // },
-            // {
-            //   path: 'preferences',
-            //   name: 'Preferences',
-            //   component: PreferencesCandidate,
-            // }, {
+            {
+              path: 'address',
+              name: 'CandidateAddress',
+              component: CandidateAddress,
+            },
+            {
+              path: 'experience',
+              name: 'CandidateExperience',
+              component: CandidateExperience,
+            },
+            {
+              path: 'schooling',
+              name: 'CandidateSchooling',
+              component: CandidateSchooling,
+            },
+            {
+              path: 'profiles',
+              name: 'CandidateProfiles',
+              component: CandidateProfiles,
+            },
+            {
+              path: 'preferences',
+              name: 'CandidatePreferences',
+              component: CandidatePreferences,
+            },
+            //  {
             //   path: 'skill',
             //   name: 'Skill',
             //   component: SkillsCandidate,
-            // }, {
-            //   path: 'language',
-            //   name: 'Language',
-            //   component: LanguageCandidate,
-            // }
+            // }, 
+            {
+              path: 'language',
+              name: 'CandidateLanguage',
+              component: CandidateLanguage,
+            }
           ]
         }
       ]

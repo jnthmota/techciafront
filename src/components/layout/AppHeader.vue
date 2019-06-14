@@ -16,7 +16,7 @@
             <b-dropdown-item>
               <i class="fa fa-user"/> Meu Perfil
             </b-dropdown-item>
-            <b-dropdown-item to="/candidates/personalData">
+            <b-dropdown-item to="/candidate/candidate-update/personalData">
               <i class="fa fa-pencil"/> Editar Perfil
             </b-dropdown-item>
             <b-dropdown-item @click.prevent="logout()">

@@ -7,6 +7,12 @@
         </li>
         <li>
           <router-link
+            to="/candidate/candidate-update/address"
+            active-class="active"
+          >Endereço</router-link>
+        </li>
+        <li>
+          <router-link
             to="/candidate/candidate-update/experience"
             active-class="active"
           >Experiências</router-link>

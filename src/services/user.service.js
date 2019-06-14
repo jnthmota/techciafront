@@ -22,7 +22,7 @@ export const userApi = {
     get() {
         return axiosInstance.get('/users/me');
     },
-    put(endpoint, body) {
-        return axiosInstance.put(endpoint, body);
+    put(body) {
+        return axiosInstance.put('/users', body);
     }
 };
