@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapFields } from "../../helpers/helpers.js";
+import { mapFields } from "@/configs/helpers.js";
 export default {
   computed: {
     ...mapFields({

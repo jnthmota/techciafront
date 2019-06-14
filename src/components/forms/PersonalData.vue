@@ -40,16 +40,16 @@
     <hr>
     <b-form-group class="text-right">
       <b-button
-          @click.prevent="updateUser()"
-          type="submit"
-          size="sm"
-          variant="primary"
-        >Salvar e continuar</b-button>
+        @click.prevent="updateUser()"
+        type="submit"
+        size="sm"
+        variant="primary"
+      >Salvar e continuar</b-button>
     </b-form-group>
   </form>
 </template>
 <script>
-import { required, minLength, between } from 'vuelidate/lib/validators'
+import { required, minLength, between } from "vuelidate/lib/validators";
 import MaskedInput from "vue-text-mask";
 import { mapFields } from "@/configs/helpers";
 export default {
@@ -64,7 +64,7 @@ export default {
   components: {
     MaskedInput
   },
-   validations: {
+  validations: {
     email: {
       required
     }

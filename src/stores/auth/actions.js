@@ -16,7 +16,7 @@ export const actions = {
                 }
                 else {
                     context.commit('setTypeUser', "company");
-                    router.push("/company");
+                    router.push("/teste");
                 }
                 return response;
             } catch (error) {

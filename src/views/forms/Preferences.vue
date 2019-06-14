@@ -77,7 +77,7 @@
   </form>
 </template>
 <script>
-import { mapFields } from "../../helpers/helpers";
+import { mapFields } from "@/configs/helpers";
 export default {
   computed: {
     ...mapFields({

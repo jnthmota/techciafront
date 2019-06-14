@@ -9,6 +9,8 @@ const Company = () => import('@/pages/company/Company')
 const CandidateUpdate = () => import('@/pages/candidate/update/CandidateUpdate');
 const CandidatePersonalData = () => import('@/pages/candidate/update/PersonalData');
 
+const teste = () => import('@/views/company/vacancy/CandidateVacancy');
+
 
 Vue.use(Router)
 
@@ -21,6 +23,11 @@ export default new Router({
       path: "/",
       name: "Home",
       component: Home
+    },
+    {
+      path: "/teste",
+      name: "teste",
+      component: teste
     },
     {
       path: "/candidate",

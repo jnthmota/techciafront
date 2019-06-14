@@ -18,7 +18,7 @@
       </form>
 </template>
 <script>
-import { mapFields } from "../../helpers/helpers.js";
+import { mapFields } from "@/configs/helpers";
 export default {
   computed: {
     url: {

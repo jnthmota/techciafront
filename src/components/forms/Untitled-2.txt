@@ -1,0 +1,23 @@
+select nome,sum(valorFaturado) as valorFaturado, sum(IFNULL(custo,0)) as custo,sum(IFNULL(imposto/100,0)*valorFaturado) as Imposto,avg(imposto) imposto_medio,sum(IFNULL(comissao/100,0)*valorFaturado) as Comissao,avg(comissao) as comissao_media, link from 
+(select nome,C.id as CFID,C.descricao as conta,valor as valorFaturado, custo ,C.clienteID,nexus.getPorcentagemImposto(C.ID) as imposto,C.porcentagemComissao as comissao
+  from Cobranca.Fatura A left join 
+  (select contaFaturamentoID,sum(IFNULL(valorCustoOriginacao,0) + IFNULL(valorCustoTerminacao,0)) as custo from 
+  Faturamento.DadosDiarioCusto where data>='2019-05-01 00:00:00' and data <= '2019-05-31 23:59:59' group by contaFaturamentoID) B on
+  (A.contaFaturamentoID = B.contaFaturamentoID)
+  
+  inner join Interoperabilidade.CONTA_FATURAMENTO C on (C.ID = A.contaFaturamentoID)
+  inner join nexus.Cliente D on (D.clienteID = C.clienteID)
+  inner join nexus.Pessoa E on (E.pessoaID = D.pessoaID)
+  
+  
+where inicioCicloFaturamento = '2019-05-01'  and fimCicloFaturamento = '2019-05-31'
+   AND A.status NOT IN (4 , 7)
+            AND A.valor > 0
+
+group by A.faturaID
+
+) as contas 
+
+left join (select clienteID,sum(mensalidade) as link from nexus.Link where status = 'ATIVO' group by clienteID) as links on (links.clienteID = contas.clienteID)
+
+group by contas.clienteID
