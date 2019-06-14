@@ -7,7 +7,7 @@
       </router-link>
     </b-col>
     <b-col   md="6">
-      <b-navbar-nav :v-if="$store.state.auth.isLogin" class="ml-auto">
+      <b-navbar-nav v-if="isLogin" class="ml-auto">
         <AppHeaderDropdown  right no-caret>
           <template slot="header">
             <img src="@/assets/images/user.png" width="45px" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -31,6 +31,9 @@
 <script>
 import { HeaderDropdown as AppHeaderDropdown } from "@coreui/vue";
 export default {
+  mounted() {
+    this.isLogin = this.$store.getters.isLogin;
+  },
   name: "Header",
   data() {
     return {
@@ -46,4 +49,4 @@ export default {
     }
   }
 };
-</script> 
+</script>

@@ -31,7 +31,7 @@
           <b-form-group>
             <label for="document">CPF</label>
             <masked-input
-              :mask="[/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
+              :mask="[/[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
               v-model="document"
               type="text"
               id="document"

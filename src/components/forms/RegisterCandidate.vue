@@ -8,7 +8,7 @@
     </b-form-group>
     <b-form-group>
       <masked-input
-        :mask="[/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
+        :mask="[/[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
         v-model="document"
         type="text"
         id="document"
@@ -17,7 +17,7 @@
     </b-form-group>
     <b-form-group>
       <masked-input
-        :mask="['(', /[1-9]/, /\d/, ')', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]"
+        :mask="['(', /[0-9]/, /\d/, ')', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]"
         v-model="phone"
         type="text"
         id="phone"

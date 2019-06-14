@@ -182,14 +182,14 @@ export default {
         );
         return;
       } else {
-        this.$store.commit("setCurriculum", {
+/*         this.$store.commit("setCurriculum", {
           citiesForWork: [
             {
               city: this.$store.getters.address.city,
               state: this.$store.getters.address.state
             }
           ]
-        });
+        }); */
         let response = await this.$store.dispatch(
           "updateCurriculum",
           this.$store.getters.curriculum

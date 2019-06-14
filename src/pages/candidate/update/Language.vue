@@ -163,7 +163,7 @@ export default {
           this.$store.getters.curriculum
         );
         await notification.success("Dados Atualizados");
-        await this.$router.push("/candidate/candidate-update/profile");
+        await this.$router.push("/candidate/candidate-update/profiles");
       }
     },
     deleteLanguage(index) {

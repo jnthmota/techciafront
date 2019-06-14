@@ -9,6 +9,7 @@ export const actions = {
             await payload.programmingLanguages.forEach(elemento => delete elemento._id);
             await payload.citiesForWork.forEach(elemento => delete elemento._id);
             await payload.socialProfiles.forEach(elemento => delete elemento._id);
+            console.log('payload', payload)
             const response = await curriculumApi.put(payload);
             return response;
         } catch (error) {

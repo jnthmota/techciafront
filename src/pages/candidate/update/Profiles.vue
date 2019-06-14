@@ -96,10 +96,8 @@ export default {
   methods: {
     addProfile: function() {
       this.profiles.push({
-        writtenLevel: "",
-        readingLevel: "",
-        conversationLevel: "",
-        profile: ""
+        name: '',
+        url: '',
       });
     },
     async updateProfile() {
