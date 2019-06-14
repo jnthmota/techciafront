@@ -17,8 +17,8 @@ axiosInstance.interceptors.request.use(
     }
 )
 
-export const curriculumsApi = {
-    put(endpoint, body) {
-        return axiosInstance.put(endpoint, body);
+export const curriculumApi = {
+    put(body) {
+        return axiosInstance.put('/curriculums', body);
     }
 };

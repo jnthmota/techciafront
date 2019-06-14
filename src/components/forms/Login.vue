@@ -24,8 +24,7 @@ export default {
     ...mapFields({
       fields: ["email", "password"],
       base: 'login',
-      mutation: "setLogin",
-      store: "auth"
+      mutation: "setLogin"
     })
   },
 };

@@ -36,7 +36,7 @@ import experience from "../../forms/Experience";
 export default {
   name: "Experience",
   data() {
-    return {};
+    return { submitted: false };
   },
   components: {
     experience

@@ -41,8 +41,7 @@ export default {
     ...mapFields({
       fields: ["name", "email", "password", "document", "phone"],
       base: "registerCandidate",
-      mutation: "setRegisterCandidate",
-      store: "auth"
+      mutation: "setRegisterCandidate"
     })
   },
   components: {
