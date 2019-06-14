@@ -5,4 +5,7 @@ export const mutations = {
     setVacancyCandidates(state, payload) {
         state.vacancyCandidates = Object.assign(state.vacancyCandidates, payload);
     },
+    setVacancyCreate(state, payload) {
+        state.vacancyCreate = Object.assign(state.vacancyCreate, payload);
+    },
 }

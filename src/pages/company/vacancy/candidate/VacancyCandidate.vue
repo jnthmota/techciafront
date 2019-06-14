@@ -7,10 +7,8 @@
         <br>
       </b-col>
       <b-col md="2" class="text-right">
-          <br>
-        <router-link to="/company/listVacancy" class="btn btn-primary" variant="primary">
-          Voltar
-        </router-link>
+        <br>
+        <router-link to="/company/listVacancy" class="btn btn-primary" variant="primary">Voltar</router-link>
       </b-col>
     </b-row>
     <b-row v-for="(candidate, index) in candidates" v-bind:key="index">
@@ -43,6 +41,13 @@
                     <br>
                     {{candidate.phone}}
                   </b-col>
+                  <b-col sm="4">
+                    <label>
+                      <b>Relevancia:</b>
+                    </label>
+                    <br>
+                    {{candidate.relevance.toFixed(2) * 100}} %
+                  </b-col>
                 </b-row>
                 <br>
                 <br>
@@ -54,7 +59,7 @@
                     <br>
                   </b-col>
                 </b-row>
-                <b-row  v-for="(educa, index) in candidate.curriculum.education" v-bind:key="index">
+                <b-row v-for="(educa, index) in candidate.curriculum.education" v-bind:key="index">
                   <b-col sm="4">
                     <label>
                       <b>Instituição:</b>
@@ -122,14 +127,12 @@ export default {
     };
   },
   beforeMount() {
-    this.$store
-      .dispatch("vacancyCadidate", this.$route.params.id)
-      .then(res => {
-        setTimeout(res => {
-          console.log(this.$store.getters.vacancyCandidates);
-          this.candidates = this.$store.getters.vacancyCandidates;
-        }, 1000);
-      });
+    this.$store.dispatch("vacancyCadidate", this.$route.params.id).then(res => {
+      setTimeout(res => {
+        console.log(this.$store.getters.vacancyCandidates);
+        this.candidates = this.$store.getters.vacancyCandidates;
+      }, 1000);
+    });
   },
   methods: {
     associateCandidate(id) {

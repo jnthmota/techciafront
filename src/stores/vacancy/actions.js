@@ -22,5 +22,27 @@ export const actions = {
             });
         });
     },
-    
+    createVacancy(context, payload) {
+        vacancyApi.post(`/vacancys`, payload).then(response => {
+            Vue.notify({
+                group: "foo",
+                type: "success",
+                title: "Cadastro",
+                text: "Cadastro Criado",
+                duration: 3000
+            });
+        })
+    },
+    updateVacancy() {
+        vacancyApi.put(`/vacancys`, payload).then(response => {
+            Vue.notify({
+                group: "foo",
+                type: "success",
+                title: "Cadastro",
+                text: "Dados Atualizados",
+                duration: 3000
+            });
+        })
+    }
+
 }

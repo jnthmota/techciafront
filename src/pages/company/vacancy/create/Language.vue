@@ -155,15 +155,15 @@ export default {
         );
         return;
       } else {
-        await this.$store.commit("setCurriculum", {
+        await this.$store.commit("setCreateVacancy", {
           languages: this.languages
         });
         await this.$store.dispatch(
-          "updateCurriculum",
-          this.$store.getters.curriculum
+          "createVacancy",
+          this.$store.getters.createVacancy
         );
-        await notification.success("Dados Atualizados");
-        await this.$router.push("/candidate/candidate-update/profiles");
+        await notification.success("Dados cadastrados");
+        // await this.$router.push("/candidate/candidate-update/profiles");
       }
     },
     deleteLanguage(index) {
