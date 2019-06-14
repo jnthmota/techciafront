@@ -12,7 +12,7 @@
           <template slot="header">
             <img src="@/assets/images/user.png" width="45px" class="img-avatar" alt="admin@bootstrapmaster.com">
           </template>\
-          <template slot="dropdown">
+          <template  slot="dropdown">
             <b-dropdown-item>
               <i class="fa fa-user"/> Meu Perfil
             </b-dropdown-item>

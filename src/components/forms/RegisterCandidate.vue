@@ -21,7 +21,7 @@
         v-model="phone"
         type="text"
         id="phone"
-        placeholder="Digite seu Telfone"
+        placeholder="Digite seu Telefone"
       ></masked-input>
     </b-form-group>
     <b-form-group>

@@ -24,7 +24,7 @@
               >Cadastrar</b-button>
             </RegisterCandidate>
           </b-tab>
-          <!-- <b-tab title="Cadastrar Empresa">
+          <b-tab title="Cadastrar Empresa">
             <RegisterHunter>
               <b-button
                 @click.prevent="singUpHunter()"
@@ -33,7 +33,7 @@
                 variant="primary"
               >Cadastrar</b-button>
             </RegisterHunter>
-          </b-tab>-->
+          </b-tab>
         </b-tabs>
       </div>
     </b-col>
@@ -57,6 +57,9 @@ export default {
     },
     singUpCandidate() {
       this.$store.dispatch("registerCandidate", this.$store.getters.registerCandidate);
+    },
+    singUpHunter() {
+      this.$store.dispatch("registerHunter", this.$store.getters.registerHunter);
     }
   }
 };

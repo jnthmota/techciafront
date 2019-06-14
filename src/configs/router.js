@@ -16,8 +16,14 @@ const CandidateProfiles = () => import('@/pages/candidate/update/Profiles');
 const CandidatePreferences = () => import('@/pages/candidate/update/Preferences');
 const CandidateSkills = () => import('@/pages/candidate/update/Skills');
 
-const teste = () => import('@/views/company/vacancy/CandidateVacancy');
+const ListVacancy = () => import('@/pages/company/vacancy/list/ListVacancy');
+const VacancyCandidate = () => import('@/pages/company/vacancy/candidate/VacancyCandidate');
+const VacancyCreate = () => import('@/pages/company/vacancy/create/VacancyCreate');
 
+const VacancySchooling = () => import('@/pages/company/vacancy/create/Schooling');
+const VacancyLanguage = () => import('@/pages/company/vacancy/create/Language');
+const VacancyPreferences = () => import('@/pages/company/vacancy/create/Preferences');
+const VacancySkills = () => import('@/pages/company/vacancy/create/Skills');
 
 Vue.use(Router)
 
@@ -94,7 +100,48 @@ export default new Router({
     {
       path: "/company",
       name: "Company",
-      component: Company
+      component: Company,
+      redirect: '/company/listVacancy',
+      children: [
+        {
+        path: 'listVacancy',
+        name: 'ListVacancy',
+        component: ListVacancy
+      },
+        {
+        path: '/vacancyCandidate/:id',
+        name: 'VacancyCandidate',
+        component: VacancyCandidate
+      },
+      {
+        path: '/vacancyCreate',
+        name: 'VacancyCreate',
+        component: VacancyCreate,
+        redirect: '/vacancyCreate/schooling',
+        children: [
+        {
+          path: 'schooling',
+          name: 'VacancySchooling',
+          component: VacancySchooling,
+        },
+  
+         {
+          path: 'skills',
+          name: 'CandidateSkills',
+          component: VacancySkills,
+        }, 
+         {
+          path: 'preferences',
+          name: 'VacancyPreferences',
+          component: VacancyPreferences,
+        }, 
+        {
+          path: 'language',
+          name: 'VacancyLanguage',
+          component: VacancyLanguage,
+        }]
+      },
+    ]
     },
   ]
 })

@@ -140,7 +140,7 @@
   padding: 50px;
 }
 
-.updateCandidate {
+.updateCandidate, .vacancyCreate {
   li {
     list-style: none;
     padding: 5px 0;
@@ -163,7 +163,7 @@
   }
 }
 
-.candidate {
+.candidate, .vacancyCreate {
   input {
     border-radius: 0px;
     width: 100%;
@@ -233,4 +233,10 @@
 .invalid-feedback {
   display: block;
   font-size: 14px;
+}
+
+.company{
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
 }

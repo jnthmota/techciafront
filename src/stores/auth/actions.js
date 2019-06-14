@@ -16,7 +16,7 @@ export const actions = {
                 }
                 else {
                     context.commit('setTypeUser', "company");
-                    router.push("/teste");
+                    router.push("/company");
                 }
                 return response;
             } catch (error) {
@@ -25,6 +25,42 @@ export const actions = {
         }
     },
 
+    async registerCandidate(context, payload) {
+        payload.document = payload.document.replace(/[^\d]+/g, "");
+        payload.phone = payload.phone.replace(/[^\d]+/g, "");
+        let submitted = validation.registerCandidate(payload);
+        if (submitted) {
+            try {
+                const response = await authApi.singUpCandidate(payload);
+                context.commit('setIsLogin', true);
+                context.commit('setTypeUser', "candidate");
+                window.localStorage.token = await `Bearer ${response.data.token}`;
+
+                router.push("/candidate");
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+    },
+    async registerHunter(context, payload) {
+        payload.document = payload.document.replace(/[^\d]+/g, "");
+        payload.phone = payload.phone.replace(/[^\d]+/g, "");
+        let submitted = validation.registerHunter(payload);
+
+        if (submitted) {
+            try {
+                const response = await authApi.singUpCompnay(payload);
+                context.commit('setIsLogin', true);
+                context.commit('setTypeUser', "company");
+                window.localStorage.token = await `Bearer ${response.data.token}`;
+                router.push("/company");
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+    },
     async registerCandidate(context, payload) {
         payload.document = payload.document.replace(/[^\d]+/g, "");
         payload.phone = payload.phone.replace(/[^\d]+/g, "");

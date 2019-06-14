@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>Você está logado como empresa</h1>
+  <div class="company">
+    <br>
+    <router-view></router-view>
   </div>
 </template>
 <script>

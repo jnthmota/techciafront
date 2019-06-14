@@ -24,8 +24,8 @@ export const vacancyApi = {
     put(endpoint, body) {
         return axiosInstance.put(endpoint, body);
     },
-    get(endpoint, body) {
-        return axiosInstance.get(endpoint, body);
+    get() {
+        return axiosInstance.get('/vacancys');
     },
     getID(endpoint, body) {
         return axiosInstance.get(endpoint, body);

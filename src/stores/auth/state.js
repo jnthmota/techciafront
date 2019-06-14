@@ -5,7 +5,8 @@ export const state = {
         name: "",
         email: "",
         password: "",
-        document: ""
+        document: "",
+        phone: "",
     },
     registerCandidate: {
         name: "",
