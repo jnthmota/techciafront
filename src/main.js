@@ -4,7 +4,7 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './configs/router'
 import Notifications from 'vue-notification'
-import store from "./stores/index";
+// import store from "./stores/index";
 import Vuelidate from 'vuelidate'
 
 Vue.use(BootstrapVue)
@@ -14,7 +14,7 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  store,
+  // store,
   components: {
     App
   }

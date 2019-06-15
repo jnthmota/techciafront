@@ -1,21 +1,16 @@
 <template>
-  <div class="container">
-    <AppHeader/>
-
+  <div class="App">
     <router-view></router-view>
-
-    <!-- <AppFooter/> -->
     <notifications group="foo" position="bottom center"/>
+    <AppFooter/>
   </div>
 </template>
 
 <script>
-import AppHeader from "./components/layout/AppHeader";
 import AppFooter from "./components/layout/AppFooter";
 export default {
   name: "app",
   components: {
-    AppHeader,
     AppFooter
   }
 };

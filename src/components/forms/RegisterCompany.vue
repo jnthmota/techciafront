@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="registerCandidate">
+  <form @submit.prevent="registerCompany">
     <b-form-group>
       <label for="email">
         <b>Email:</b>
@@ -33,15 +33,15 @@
     </b-form-group>
     <b-form-group>
       <label for="document">
-        <b>CPF:</b>
+        <b>CNPJ:</b>
       </label>
       <masked-input
-        :mask="[/[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]"
+        :mask="[/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/, '/', /\d/,/\d/, /\d/,/\d/, '-', /\d/,/\d/]"
         :class="{ 'is-invalid':submitted && $v.document.$error }"
         v-model="document"
         type="text"
         id="document"
-        placeholder="Digite seu CPF"
+        placeholder="Digite seu CNPJ"
       ></masked-input>
       <div v-if="submitted && $v.document.$error" class="invalid-feedback">
         <span v-if="!$v.document.required">*Campo obrigatório</span>
@@ -61,21 +61,6 @@
       ></masked-input>
       <div v-if="submitted && $v.phone.$error" class="invalid-feedback">
         <span v-if="!$v.phone.required">*Campo obrigatório</span>
-      </div>
-    </b-form-group>
-    <b-form-group>
-      <label for="dateBirth">
-        <b>Data de Nascimento:</b>
-      </label>
-      <datepicker
-        :class="{ 'is-invalid': submitted && $v.dateBirth.$error }"
-        id="dateBirth"
-        :language="ptBR"
-        format="dd MMMM yyyy"
-        v-model="dateBirth"
-      ></datepicker>
-      <div v-if="submitted && $v.dateBirth.$error" class="invalid-feedback">
-        <span v-if="!$v.dateBirth.required">*Campo obrigatório</span>
       </div>
     </b-form-group>
     <b-form-group>
@@ -101,12 +86,12 @@
 
 <script>
 import { required, email } from "vuelidate/lib/validators";
-import { notification } from "@/configs/notification";
+import { notification } from "@/configs/";
 import Datepicker from "vuejs-datepicker";
 import { ptBR } from "vuejs-datepicker/dist/locale";
 import MaskedInput from "vue-text-mask";
 export default {
-  name: "AppRegisterCandidate",
+  name: "AppRegisterCompany",
   data() {
     return {
       email: "",
@@ -114,17 +99,15 @@ export default {
       password: "",
       document: "",
       phone: "",
-      dateBirth: "",
       ptBR: ptBR,
       submitted: false
     };
   },
   components: {
-    Datepicker,
     MaskedInput
   },
   methods: {
-    registerCandidate() {
+    registerCompany() {
       this.submitted = true;
       this.$v.$touch();
       if (this.$v.$invalid) {
@@ -139,8 +122,7 @@ export default {
     name: { required },
     password: { required },
     document: { required },
-    phone: { required },
-    dateBirth: { required }
+    phone: { required }
   }
 };
 </script>

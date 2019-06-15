@@ -1,15 +1,13 @@
 <template>
-  <TheFooter>
-    <!--footer-->
-    <div>
-      <a href="https://coreui.io">TECHCIA</a>
-      <span class="ml-1">&copy; 2019.</span>
-    </div>
-    <div class="ml-auto">
-      <span class="mr-1">Criado por</span>
-      <a href="https://coreui.io">TECHCIA</a>
-    </div>
-  </TheFooter>
+  <div class="container">
+    <b-row class="footer">
+      <b-col class="text-center" md="12">
+        <span>
+          2019 © Portal de empregos Devworks
+        </span>
+      </b-col>
+    </b-row>
+  </div>
 </template>
 <script>
 export default {
