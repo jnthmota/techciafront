@@ -7,7 +7,7 @@
       </router-link>
     </b-col >
     <b-col class="text-right menu" lg="6" md="6" sm="12" xs="12">
-      <b-link to="/home/">Home</b-link>
+      <b-link to="/home/initial">Home</b-link>
       <b-link to="/home/login">Login</b-link>
       <b-link to="/home/registerCandidate">Cadastrar Candidato</b-link>
       <b-link to="/home/registerCompany">Cadastrar Empresa</b-link>

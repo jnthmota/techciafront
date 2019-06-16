@@ -6,10 +6,14 @@ import router from './configs/router'
 import Notifications from 'vue-notification'
 // import store from "./stores/index";
 import Vuelidate from 'vuelidate'
+import filter from '@/configs/filters'
 
 Vue.use(BootstrapVue)
 Vue.use(Notifications)
 Vue.use(Vuelidate)
+
+
+
 new Vue({
   el: '#app',
   router,

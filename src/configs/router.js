@@ -2,11 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Home
-const AppHome = () => import('@/pages/home/AppHome');
+const Home = () => import('@/pages/home/AppHome');
 const PageInitial = () => import('@/pages/home/AppPageInitial');
 const Login = () => import('@/pages/home/AppLogin');
 const RegisterCandidate = () => import('@/pages/home/AppRegisterCandidate');
 const registerCompany = () => import('@/pages/home/AppRegisterCompany');
+
+
+// Candidate
+const Candidate = () => import('@/pages/candidate/AppCandidate');
+const VacancysCandidate = () => import('@/pages/candidate/vacancy/AppVacancys');
+const ViewProfile = () => import('@/pages/candidate/profile/AppViewProfile');
+
 
 Vue.use(Router)
 
@@ -16,15 +23,15 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home/',
+      redirect: '/home/initial',
     },
     {
-      path: '/home',
+      path: '/home/',
       name: 'Home',
-      component: AppHome,
+      component: Home,
       children: [
         {
-          path: '/',
+          path: 'initial',
           name: 'Pagina Inicial',
           component: PageInitial
         },{
@@ -42,5 +49,23 @@ export default new Router({
         }
       ]
     },
+    {
+      path: '/candidate',
+      name: 'Candidate',
+      redirect: '/candidate/vacancys',
+      component: Candidate,
+      children: [
+        {
+          path: 'vacancys',
+          name: 'Vagas',
+          component: VacancysCandidate
+        },
+        {
+          path: 'view-profile',
+          name: 'Visualizar Perfil',
+          component: ViewProfile
+        }
+      ]
+    }
   ]
 })
