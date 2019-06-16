@@ -2,18 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Home
-const Home = () => import('@/pages/home/AppHome');
+const AppHome = () => import('@/pages/home/AppHome');
 const PageInitial = () => import('@/pages/home/AppPageInitial');
 const Login = () => import('@/pages/home/AppLogin');
 const RegisterCandidate = () => import('@/pages/home/AppRegisterCandidate');
 const registerCompany = () => import('@/pages/home/AppRegisterCompany');
-
-
-// Candidate
-const Candidate = () => import('@/pages/candidate/AppCandidate');
-const VacancysCandidate = () => import('@/pages/candidate/vacancy/AppVacancys');
-const ViewProfile = () => import('@/pages/candidate/profile/AppViewProfile');
-
 
 Vue.use(Router)
 
@@ -24,10 +17,10 @@ export const router = new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home,
+      component: AppHome,
       children: [
         {
-          path: 'initial',
+          path: '/',
           name: 'Pagina Inicial',
           component: PageInitial
         },
