@@ -13,16 +13,16 @@
     <b-col class="text-right" lg="6" md="6" sm="6">
       <ul class="menu">
         <li>
-          <b-link  to="/candidate/vacancys">Vagas</b-link>
+          <b-link to="/candidate/vacancys">Vagas</b-link>
         </li>
         <li>
-          <b-link  to="/candidate/view-profile">Meu Perfil</b-link>
+          <b-link to="/candidate/view-profile">Meu Perfil</b-link>
         </li>
         <li>
-          <b-link  to="/candidate/edit-profile">Editar Perfil</b-link>
+          <b-link to="/candidate/edit-profile">Editar Perfil</b-link>
         </li>
         <li>
-          <b-link  @click.prevent="logout()">Sair</b-link>
+          <b-link @click.prevent="logout()">Sair</b-link>
         </li>
       </ul>
     </b-col>
@@ -32,10 +32,16 @@
 <script>
 export default {
   name: "AppHeaderCandidate",
+  computed: {
+    loggedIn() {
+      return this.$store.state.authentication.status.loggedIn;
+    }
+  },
   methods: {
-    logout(){
-      window.localStorage.clear();
-      this.$router.push('/');
+    logout() {
+      const { dispatch } = this.$store;
+      dispatch("authentication/logout");
+      this.$router.push("/");
     }
   }
 };
