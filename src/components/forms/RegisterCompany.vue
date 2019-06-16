@@ -18,14 +18,14 @@
     </b-form-group>
     <b-form-group>
       <label for="name">
-        <b>Nome:</b>
+        <b>Razão Social:</b>
       </label>
       <b-form-input
         :class="{ 'is-invalid':submitted && $v.name.$error }"
         v-model="name"
         type="text"
         id="name"
-        placeholder="Digite seu CPF"
+        placeholder="Digite a Razão Social"
       ></b-form-input>
       <div v-if="submitted && $v.name.$error" class="invalid-feedback">
         <span v-if="!$v.name.required">*Campo obrigatório</span>
@@ -113,7 +113,10 @@ export default {
       if (this.$v.$invalid) {
         notification.error("Cadastro", "Preencha os campos corretamente");
       } else {
-        // Ação aqui
+        const { dispatch } = this.$store;
+        const { email, name, password, document, phone } = this;
+        const payload = { email, name, password, document, phone };
+        dispatch("authentication/signupCompany", payload);
       }
     }
   },

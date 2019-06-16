@@ -2,11 +2,13 @@ import './polyfill'
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
-import router from './configs/router'
+import { router } from './configs/router'
 import Notifications from 'vue-notification'
 // import store from "./stores/index";
 import Vuelidate from 'vuelidate'
 import filter from '@/configs/filters'
+
+import { store } from './store'
 
 Vue.use(BootstrapVue)
 Vue.use(Notifications)
@@ -18,7 +20,7 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  // store,
+  store,
   components: {
     App
   }

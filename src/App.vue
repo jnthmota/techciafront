@@ -8,11 +8,17 @@
 
 <script>
 import AppFooter from "./components/layout/AppFooter";
+
 export default {
   name: "app",
+  computed: {
+    alert() {
+      return this.$store.state.alert;
+    }
+  },
   components: {
     AppFooter
-  }
+  },
 };
 </script>
 
@@ -31,5 +37,4 @@ $simple-line-font-path: "~simple-line-icons/fonts/";
 @import "~bootstrap-vue/dist/bootstrap-vue.css";
 // Import Main styles for this application
 @import "assets/scss/style";
-
 </style>

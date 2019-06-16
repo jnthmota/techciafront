@@ -40,7 +40,9 @@ export default {
       if (this.$v.$invalid) {
          notification.error("Login", "Preencha os campos corretamente");
       }else{
-        // Ação aqui
+        const { dispatch } = this.$store;
+        const { email, password } = this;
+        dispatch("authentication/login", { email, password });
       }
     }
   },

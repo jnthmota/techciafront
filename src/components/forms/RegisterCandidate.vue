@@ -123,6 +123,10 @@ export default {
     Datepicker,
     MaskedInput
   },
+  created() {
+    // reset login status
+    this.$store.dispatch("authentication/logout");
+  },
   methods: {
     registerCandidate() {
       this.submitted = true;
@@ -130,7 +134,10 @@ export default {
       if (this.$v.$invalid) {
         notification.error("Cadastro", "Preencha os campos corretamente");
       } else {
-        // Ação aqui
+        const { dispatch } = this.$store;
+        const { email, name, password, document, phone, dateBirth } = this;
+        const payload = { email, name, password, document, phone, dateBirth };
+        dispatch("authentication/signupCandidate", payload);
       }
     }
   },
