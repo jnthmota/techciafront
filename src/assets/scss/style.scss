@@ -31,12 +31,23 @@ a {
   margin: 0 auto;
 }
 
-input {
+input,
+select {
   width: 100% !important;
   padding: 10px !important;
   height: 35px !important;
   border: 1px solid #526173 !important;
   border-radius: 0 !important;
+}
+
+select {
+  padding: 6px !important;
+}
+
+textarea {
+  height: 100px !important;
+  width: 100% !important;
+  padding: 10px;
 }
 
 button {
@@ -50,6 +61,21 @@ button {
 
 .btn-primary {
   background-color: #526173 !important;
+}
+
+.multiselect__input {
+  border: 0px !important;
+  width: 0px !important;
+  position: absolute;
+  padding: 0px !important;
+}
+
+.multiselect__tags {
+  width: 100% !important;
+  padding: 6px !important;
+  height: 35px !important;
+  border: 1px solid #526173 !important;
+  border-radius: 0 !important;
 }
 
 // HEADER
@@ -400,7 +426,7 @@ button {
     }
   }
 
-  .edit-profile {
+  .AppEditProfile {
     .banner-edit-profile {
       padding: 130px 0px;
       height: 300px;
@@ -416,6 +442,98 @@ button {
         #4e4376,
         #2b5876
       ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .form-wizard {
+      max-width: 60%;
+      background-color: #fff;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      border-radius: 10px;
+      box-shadow: 1px 0px 5px rgba(77, 77, 77, 0.2);
+      .active {
+        border-bottom: 0px !important;
+      }
+
+      a {
+        font-weight: 600;
+        color: #333;
+      }
+      .wizard-icon-circle {
+        border: 3px solid #2b5876;
+      }
+      .checked {
+        border: 3px solid #2b5876 !important;
+      }
+      .wizard-icon-container {
+        background-color: #2b5876 !important;
+      }
+
+      .wizard-btn {
+        background-color: #2b5876 !important;
+        border-color: #2b5876 !important;
+        width: 150px !important;
+        padding: 50px 50px;
+      }
+
+      .FormPersonalData,
+      .FormAddress,
+      .FormProfessionalExperience,
+      .FormEducation,
+      .FormLanguage,
+      .FormExperience,
+      .FormOthers {
+        color: #333;
+        font-weight: 600;
+        .row {
+          max-width: 50%;
+        }
+        .row {
+          max-width: 100%;
+          text-align: left;
+        }
+        margin: 20px 0;
+        padding: 30px;
+        border: 3px solid #2b5876;
+      }
+      .FormOthers {
+        h4 {
+          text-align: left;
+          margin-top: 40px;
+        }
+        .row {
+          max-width: 100%;
+        }
+        i {
+          margin-top: 35px !important;
+        }
+        @media only screen and (max-width: 900px) {
+          i {
+            margin-top: 0px !important;
+            margin-bottom: 20px !important;
+          }
+        }
+        .certificate-skills{
+          .col-certificate-skills{
+            margin: 0px!important;
+            padding: 0px !important;
+          }
+        }
+      }
+
+      .FormProfessionalExperience,
+      .FormEducation,
+      .FormLanguage,
+      .FormOthers {
+        .cui-trash {
+          color: red;
+          cursor: pointer;
+        }
+        .addExperience {
+          font-size: 16px;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

@@ -32,7 +32,7 @@ export const authentication = {
           .then(
             user => {
               commit('signUpSuccess', user);
-              router.push('/');
+              router.push('/candidate');
             },
             error => {
               commit('signUpFailure', error);
