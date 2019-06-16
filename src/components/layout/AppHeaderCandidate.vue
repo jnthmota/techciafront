@@ -19,7 +19,7 @@
           <b-link  to="/candidate/view-profile">Meu Perfil</b-link>
         </li>
         <li>
-          <b-link  to="/candidate/update-profile">Editar Perfil</b-link>
+          <b-link  to="/candidate/edit-profile">Editar Perfil</b-link>
         </li>
         <li>
           <b-link  @click.prevent="logout()">Sair</b-link>

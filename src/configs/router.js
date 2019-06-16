@@ -13,6 +13,7 @@ const registerCompany = () => import('@/pages/home/AppRegisterCompany');
 const Candidate = () => import('@/pages/candidate/AppCandidate');
 const VacancysCandidate = () => import('@/pages/candidate/vacancy/AppVacancys');
 const ViewProfile = () => import('@/pages/candidate/profile/AppViewProfile');
+const EditProfile = () => import('@/pages/candidate/profile/AppEditProfile');
 
 
 Vue.use(Router)
@@ -64,6 +65,11 @@ export default new Router({
           path: 'view-profile',
           name: 'Visualizar Perfil',
           component: ViewProfile
+        },
+        {
+          path: 'edit-profile',
+          name: 'Editar Perfil',
+          component: EditProfile
         }
       ]
     }
