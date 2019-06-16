@@ -17,16 +17,12 @@ const ViewProfile = () => import('@/pages/candidate/profile/AppViewProfile');
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'hash', // https://router.vuejs.org/api/#mode
+export const router = new Router({
+  mode: 'history', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'open active',
   routes: [
     {
       path: '/',
-      redirect: '/home/initial',
-    },
-    {
-      path: '/home/',
       name: 'Home',
       component: Home,
       children: [
@@ -34,7 +30,8 @@ export default new Router({
           path: 'initial',
           name: 'Pagina Inicial',
           component: PageInitial
-        },{
+        },
+        {
           path: 'login',
           name: 'Login',
           component: Login
@@ -49,23 +46,19 @@ export default new Router({
         }
       ]
     },
-    {
-      path: '/candidate',
-      name: 'Candidate',
-      redirect: '/candidate/vacancys',
-      component: Candidate,
-      children: [
-        {
-          path: 'vacancys',
-          name: 'Vagas',
-          component: VacancysCandidate
-        },
-        {
-          path: 'view-profile',
-          name: 'Visualizar Perfil',
-          component: ViewProfile
-        }
-      ]
-    }
+    { path: '*', redirect: '/' }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/login', '/registerCandidate', '/registerCompany', '/'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
+
+  if (authRequired && !loggedIn) {
+    return next('/');
+  }
+
+  next();
 })
