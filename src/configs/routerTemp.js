@@ -8,6 +8,11 @@ const VacancysCandidate = () => import('@/pages/candidate/vacancy/AppVacancys');
 const ViewProfile = () => import('@/pages/candidate/profile/AppViewProfile');
 const EditProfile = () => import('@/pages/candidate/profile/AppEditProfile');
 
+// Company
+const Company = () => import('@/pages/company/AppCompany');
+const VacancysCompany = () => import('@/pages/company/vacancy/AppVacancys');
+const FormVacancy = () => import('@/pages/company/vacancy/AppFormVacancy');
+
 Vue.use(Router)
 export default new Router({
     mode: 'hash', // https://router.vuejs.org/api/#mode
@@ -25,22 +30,43 @@ export default new Router({
             children: [
                 {
                     path: 'vacancys',
-                    name: 'Vagas',
+                    name: 'Vacancys',
                     component: VacancysCandidate
                 },
                 {
                     path: 'view-profile',
-                    name: 'Visualizar Perfil',
+                    name: 'ViewProfile',
                     component: ViewProfile
                 },
                 {
                     path: 'edit-profile',
-                    name: 'Editar Perfil',
+                    name: 'EditProfile',
                     component: EditProfile
                 }
             ]
+        },
+        {
+            path: '/company',
+            name: 'Company',
+            component: Company,
+            redirect: '/company/vacancys',
+            children: [
+                {
+                    path: 'vacancys',
+                    name: 'Vacancys',
+                    component: VacancysCompany
+                },
+                {
+                    path: 'create-vacancy',
+                    name: 'CreateVacancy',
+                    component: FormVacancy
+                },
+                {
+                    path: 'edit-vacancy/:id',
+                    name: 'EditVacancy',
+                    component: FormVacancy
+                },
+            ]
         }
-
-
     ]
 })

@@ -161,7 +161,7 @@ import { required } from "vuelidate/lib/validators";
 import MaskedInput from "vue-text-mask";
 import { notification } from "@/configs/notification";
 export default {
-  name: "Schooling",
+  name: "Education",
   data() {
     return {
       educations: [

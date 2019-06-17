@@ -16,12 +16,14 @@
                 <h4>Detalhes do profissional:</h4>
                 <div class="professional-details">
                   <b-row>
-                    <b-col md="6" sm="12">
+                    <b-col md="12" sm="12">
                       <label>
                         <b>Email:</b>
                       </label>
                       <br>
                       <span>{{user.email}}</span>
+                      <br>
+                      <br>
                     </b-col>
                     <b-col md="6" sm="12">
                       <label>

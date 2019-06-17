@@ -2,14 +2,28 @@
   <div class="AppVacancys">
     <!-- Banner quando o candidato não tem vagas -->
     <b-row v-if="!mudarStatus" class="not-vacancy">
-      <b-col md="12">
-        <h1 class="text-center">Infelizmente não temos oportunidades para seu perfil.</h1>
+      <b-col md="12" class="text-center">
+        <h1 class="text-center">Você não tem vaga cadastrada.</h1>
+        <b-link
+          to="/company/create-vacancy"
+          @click.prevent="mudarStatus = !mudarStatus"
+          size="sm"
+          variant="primary"
+          class="btn-primary text-center"
+        >Cadastrar Vaga</b-link>
       </b-col>
     </b-row>
 
     <b-row v-if="mudarStatus" class="banner-vacancy">
       <b-col md="12">
-        <h1 class="text-center">Você tem oportunidades de emprego, confira abaixo!</h1>
+        <h1 class="text-center">Confira suas vagas abaixo!</h1>
+        <b-link
+          to="/company/create-vacancy"
+          @click.prevent="mudarStatus = !mudarStatus"
+          size="sm"
+          variant="primary"
+          class="btn-primary text-center"
+        >Cadastrar Nova Vaga</b-link>
       </b-col>
     </b-row>
 
@@ -30,14 +44,18 @@
     <!-- Lista de vagas -->
     <b-row v-if="mudarStatus" class="list-vacancy">
       <b-col v-for="(vacancy, index) in vacancys" v-bind:key="index" class="vacancy" md="6">
-        <b-card :header="vacancy.position">
-          <h4>{{vacancy.user.name}}</h4>
+        <b-card>
+          <div slot="header">
+            <b-row>
+              <b-col md="6">{{vacancy.position}}</b-col>
+              <b-col class="text-right" md="6">
+                <b-link :to="{path: '/company/edit-vacancy/'+vacancy._id}"><i class="fa fa-pencil" aria-hidden="true"></i></b-link>
+                
+              </b-col>
+            </b-row>
+          </div>
+
           <h5>{{vacancy.minLevel}}</h5>
-          <p>
-            <span class="salary">{{vacancy.user.email}}</span>
-            <span class="separate">|</span>
-            <span class="salary">{{vacancy.user.phone | formatPhone}}</span>
-          </p>
           <p>
             <span class="salary">R$ {{vacancy.maxSalary}}</span>
             <span class="separate">|</span>
@@ -112,12 +130,7 @@ export default {
               city: "São Paulo",
               state: "São Paulo"
             }
-          ],
-          user: {
-            name: "Santander",
-            email: "vonex@gmail.com",
-            phone: "11943038711"
-          }
+          ]
         },
         {
           _id: "1",
@@ -147,12 +160,7 @@ export default {
               city: "São Paulo",
               state: "São Paulo"
             }
-          ],
-          user: {
-            name: "Santander",
-            email: "vonex@gmail.com",
-            phone: "11943038711"
-          }
+          ]
         },
         {
           _id: "1",
@@ -182,12 +190,7 @@ export default {
               city: "São Paulo",
               state: "São Paulo"
             }
-          ],
-          user: {
-            name: "Santander",
-            email: "vonex@gmail.com",
-            phone: "11943038711"
-          }
+          ]
         },
         {
           _id: "1",
@@ -217,13 +220,38 @@ export default {
               city: "São Paulo",
               state: "São Paulo"
             }
-          ],
-          user: {
-            name: "Santander",
-            email: "vonex@gmail.com",
-            phone: "11943038711"
-          }
+          ]
         },
+        {
+          _id: "1",
+          position: "Desenvolvedor Back End",
+          minLevel: "Junior",
+          description:
+            "Já pensou em fazer parte de um time de tecnologia que está criando muito mais do que um delivery comum? \n A Rappi é um assistente pessoal que faz tudo o que você precisar! Suas compras de supermercado, comprar remédios na farmácia ou seus pratos preferidos em qualquer restaurante da cidade, levar aquele documento no cartório ou até mesmo te entregar dinheiro em espécie para uma emergência. \n Buscamos desenvolvedores que consigam entender suas responsabilidade e tenham a capacidade de trabalhar de forma autônoma.",
+          maxSalary: 2000,
+          offerType: ["CLT"],
+          workType: ["Presencial", "Remoto"],
+          skills: [
+            {
+              experience: "Java"
+            },
+            {
+              experience: "Node JS"
+            },
+            {
+              experience: "Python"
+            },
+            {
+              experience: "C"
+            }
+          ],
+          citiesForWork: [
+            {
+              city: "São Paulo",
+              state: "São Paulo"
+            }
+          ]
+        }
       ]
     };
   },

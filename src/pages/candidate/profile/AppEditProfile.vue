@@ -24,6 +24,9 @@
           <tab-content :before-change="() => validate('formEducation')" title="Escolaridade">
             <FormEducation ref="formEducation"></FormEducation>
           </tab-content>
+          <tab-content :before-change="() => validate('formProgrammingLanguages')"  title="Linguagens de Programação">
+            <FormProgrammingLanguages ref="formProgrammingLanguages"></FormProgrammingLanguages>
+          </tab-content>
           <tab-content :before-change="() => validate('formPreferences')" title="Preferências">
             <FormPreferences ref="formPreferences"></FormPreferences>
           </tab-content>
@@ -47,6 +50,7 @@ import FormEducation from "@/components/forms/candidate/Education.vue";
 import FormLanguages from "@/components/forms/candidate/Languages.vue";
 import FormPreferences from "@/components/forms/candidate/Preferences.vue";
 import FormOthers from "@/components/forms/candidate/Others.vue";
+import FormProgrammingLanguages from "@/components/forms/candidate/ProgrammingLanguages.vue";
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 export default {
   name: "AppEditProfile",
@@ -64,7 +68,8 @@ export default {
     FormEducation,
     FormLanguages,
     FormPreferences,
-    FormOthers
+    FormOthers,
+    FormProgrammingLanguages
   },
   methods: {
     validate(ref) {

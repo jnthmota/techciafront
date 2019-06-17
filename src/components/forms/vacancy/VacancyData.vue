@@ -5,30 +5,30 @@
         <b-col md="6">
           <b-form-group label="Carreira de interesse:" label-for="github">
             <b-form-select
-              :class="{ 'is-invalid': submitted && $v.interestCareer.$error }"
-              v-model="interestCareer"
-              id="interestCareer"
+              :class="{ 'is-invalid': submitted && $v.position.$error }"
+              v-model="position"
+              id="position"
               :plain="true"
               :options="arrCarrer"
               value="Selecione um nivel"
             ></b-form-select>
-            <div v-if="submitted && $v.interestCareer.$error" class="invalid-feedback">
-              <span v-if="!$v.interestCareer.required">*Campo obrigatório</span>
+            <div v-if="submitted && $v.position.$error" class="invalid-feedback">
+              <span v-if="!$v.position.required">*Campo obrigatório</span>
             </div>
           </b-form-group>
         </b-col>
         <b-col md="6">
-          <b-form-group label="Nivel:" label-for="level">
+          <b-form-group label="Nivel:" label-for="minLevel">
             <b-form-select
-              :class="{ 'is-invalid': submitted && $v.level.$error }"
-              v-model="level"
-              id="level"
+              :class="{ 'is-invalid': submitted && $v.minLevel.$error }"
+              v-model="minLevel"
+              id="minLevel"
               :plain="true"
-              :options="levelArr"
+              :options="minLevelArr"
               value="Selecione um nivel"
             ></b-form-select>
-            <div v-if="submitted && $v.level.$error" class="invalid-feedback">
-              <span v-if="!$v.level.required">*Campo obrigatório</span>
+            <div v-if="submitted && $v.minLevel.$error" class="invalid-feedback">
+              <span v-if="!$v.minLevel.required">*Campo obrigatório</span>
             </div>
           </b-form-group>
         </b-col>
@@ -75,8 +75,44 @@
       <br>
       <b-row>
         <b-col md="6">
+          <b-form-group label="Cidade:" label-for="city">
+            <b-form-input
+              :class="{ 'is-invalid': submitted && $v.citiesForWork.$each[0].city.$error }"
+              v-model="citiesForWork[0].city"
+              type="text"
+              id="city"
+              placeholder="Ex: São Paulo"
+            ></b-form-input>
+            <div v-if="submitted && $v.citiesForWork.$each[0].city.$error" class="invalid-feedback">
+              <span v-if="!$v.citiesForWork.$each[0].city.required">*Campo obrigatório</span>
+            </div>
+          </b-form-group>
+        </b-col>
+        <b-col md="6">
+          <b-form-group label="Estado:" label-for="state">
+            <b-form-input
+              :class="{ 'is-invalid': submitted && $v.citiesForWork.$each[0].state.$error }"
+              v-model="citiesForWork.state"
+              type="text"
+              id="state"
+              placeholder="Ex: São Paulo"
+            ></b-form-input>
+            <div v-if="submitted && $v.citiesForWork.$each[0].state.$error" class="invalid-feedback">
+              <span v-if="!$v.citiesForWork.$each[0].state.required">*Campo obrigatório</span>
+            </div>
+          </b-form-group>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col md="6">
           <b-form-group label="Pretenção Salarial:" label-for="salary">
-            <b-form-input v-model="salaryPretension" type="number" id="salary" placeholder="R$ 2.000"></b-form-input>
+            <b-form-input
+              :class="{ 'is-invalid': submitted && $v.salaryPretension.$error }"
+              v-model="salaryPretension"
+              type="number"
+              id="salary"
+              placeholder="R$ 2.000"
+            ></b-form-input>
             <div v-if="submitted && $v.salaryPretension.$error" class="invalid-feedback">
               <span v-if="!$v.salaryPretension.required">*Campo obrigatório</span>
             </div>
@@ -107,7 +143,7 @@ export default {
       ],
       arrOffer: ["CLT", "PJ"],
       arrWork: ["Presencial", "Remoto"],
-      levelArr: [
+      minLevelArr: [
         "estagio",
         "traineer",
         "junior",
@@ -121,9 +157,15 @@ export default {
       //   Dados
       offerType: ["PJ", "CLT"],
       workType: ["Presencial"],
-      level: "estagio",
-      interestCareer: "Desenvolvimento BackEnd",
-      salaryPretension: 2000,
+      minLevel: "estagio",
+      position: "Desenvolvimento BackEnd",
+      salaryPretension: 0,
+      citiesForWork: [
+        {
+          city: "São Paulo",
+          state: "São Paulo"
+        }
+      ],
       submitted: false
     };
   },
@@ -150,11 +192,17 @@ export default {
     }
   },
   validations: {
-    interestCareer: { required },
+    position: { required },
     salaryPretension: { required },
     workType: { required },
     offerType: { required },
-    level: { required }
+    minLevel: { required },
+    citiesForWork: {
+      $each: {
+        city: { required },
+        state: { required }
+      }
+    }
   }
 };
 </script>
