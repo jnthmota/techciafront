@@ -2,8 +2,8 @@
     <div class="PageInitial">
         <b-row class="banner">
             <b-col lg="12" md="12" sm="12" xs="12">
-                <h1>Está procurando emprego? Encontre com a devworks</h1>
-                <h4>A devworks é um portal de empregos que te conecta com o mundo corporativo.</h4>
+                <h1>Está procurando emprego? Encontre com a Devworks</h1>
+                <h4>A Devworks é um portal de empregos que te conecta com o mundo corporativo.</h4>
                 <br><br>
                 <b-link class="registerCandidate" to="/home/registerCandidate">Comece agora, é gratuito</b-link>
                 <br><br><br>

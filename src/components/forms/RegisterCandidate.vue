@@ -25,7 +25,7 @@
         v-model="name"
         type="text"
         id="name"
-        placeholder="Digite seu CPF"
+        placeholder="Digite seu nome"
       ></b-form-input>
       <div v-if="submitted && $v.name.$error" class="invalid-feedback">
         <span v-if="!$v.name.required">*Campo obrigatório</span>

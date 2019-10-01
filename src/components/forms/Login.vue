@@ -17,9 +17,14 @@
     </b-form-group>
     <b-form-group>
       <b-button type="submit" size="sm" variant="primary" class="btn-primary">Entrar</b-button>
+      <b-button data-v-332cfdd2="" type="button" class="btn mr-1 btn-brand btn-linkedin btn-lg"><i data-v-332cfdd2="" class="fa fa-linkedin"></i><span data-v-332cfdd2="">LinkedIn</span></b-button>
+      <button data-v-332cfdd2="" type="button" class="btn mr-1 btn-brand btn-google-plus btn-lg"><i data-v-332cfdd2="" class="fa fa-google-plus"></i><span data-v-332cfdd2="">Google+</span></button>
     </b-form-group>
   </form>
 </template>
+
+
+
 
 <script>
 import { required, email } from "vuelidate/lib/validators";

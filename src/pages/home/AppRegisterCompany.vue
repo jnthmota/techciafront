@@ -1,16 +1,15 @@
 <template>
   <div class="AppRegisterCompany">
     <b-row>
-      <b-col md="4"></b-col>
-      <b-col class="registerCandidate" md="4">
+      <b-col md="6"></b-col>
+      <b-col class="registerCandidate" md="5">
         <div>
-          <h1 class="text-center">Registrar Empresa</h1>
           <div class="form">
             <AppRegisterCompany/>
           </div>
         </div>
       </b-col>
-      <b-col md="4"></b-col>
+      <b-col md="6"></b-col>
     </b-row>
   </div>
 </template>
