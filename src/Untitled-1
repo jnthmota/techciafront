@@ -1,0 +1,38 @@
+@relation faixareversivel
+
+@attribute horario  {pico, normal}
+@attribute dia  {util, nao_util}
+@attribute QtdCarros  {pouco, moderado, muito}
+@attribute QtdOnibus  {pouco, moderado, muito}
+@attribute risco {baixo, moderado, alto}
+
+
+@data
+pico,util,muito,moderado,alto
+pico,util,muito,muito,alto
+pico,util,pouco,muito,moderado
+normal,nao_util,muito,moderado,baixo
+normal,nao_util,pouco,pouco,baixo
+normal,nao_util,moderado,pouco,baixo
+normal,nao_util,moderado,pouco,baixo
+normal,nao_util,pouco,pouco,baixo
+normal,nao_util,moderado,moderado,baixo
+normal,util,muito,muito,alto
+normal,util,pouco,pouco,baixo
+normal,util,muito,moderado,moderado
+normal,util,muito,pouco,moderado
+normal,util,muito,muito,alto
+pico,util,muito,muito,alto
+pico,util,muito,pouco,alto
+pico,util,pouco,muito,alto
+pico,util,moderado,moderado,moderado
+pico,nao_util,muito,pouco,alto
+pico,nao_util,muito,muito,alto
+pico,nao_util,pouco,muito,alto
+pico,nao_util,pouco,pouco,alto
+pico,nao_util,pouco,moderado,alto
+pico,nao_util,pouco,moderado,baixo
+pico,nao_util,pouco,moderado,moderado
+pico,nao_util,muito,moderado,alto
+pico,nao_util,moderado,moderado,moderado
+pico,nao_util,pouco,muito,moderado
